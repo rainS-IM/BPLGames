@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp">
+<title>BrightPath Learning</title>
+
+
+
+
+
+
+<style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #ffd54f, #ffb300);
+  color: #333;
+  text-align: center;
+  min-height: 100vh;
+}
+
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+.header-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.header img {
+  width: 50px;
+  height: 50px;
+}
+
+
+#loginBox, #content {
+  display: none;
+}
+
+
+#mathPage {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto 150px auto;
+}
+
+
+.mathBox {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+
+.math-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.1em;
+}
+
+
+#loginBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f8f9fa;
+  padding: 20px;
+  border-top: 3px solid #ffb300;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+}
+
+
+/* SEARCH FEATURE STYLES */
+.search-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+
+#gameSearch {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid #ffb300;
+    outline: none;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+
+input {
+  padding: 12px;
+  border-radius: 6px;
+  border: 2px solid #ddd;
+  width: 200px;
+  font-size: 16px;
+}
+
+
+button {
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  background: #ffb300;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+
+button:hover { background: #e6a100; }
+
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+
+.card {
+  width: 180px;
+  cursor: pointer;
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+
+.card:hover { transform: translateY(-5px); }
+
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+
+.footer {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 14px;
+  backdrop-filter: blur(5px);
+}
+
+
+</style>
+</head>
+<body>
+<div id="footerContainer"></div>
+
+
+
+
+<div id="mainWrapper">
+    <div class="header">
+      <div class="header-row">
+        <img src="https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp">
+        <h1>BrightPath Learning v2</h1>
+      </div>
+    </div>
+
+
+    <div id="mathPage">
+      <div class="mathBox">
+        <h2 style="text-align: center; color: #ffb300;">Unit 4: Advanced STEM Curriculum</h2>
+        <hr>
+        <div class="math-grid">
+            <div>
+                <h4>Algebraic Functions</h4>
+                <p>1. Solve for $x$: $2x^2 + 5x - 3 = 0$</p>
+                <p>2. Simplify: $\frac{(x + 3)(x - 3)}{x^2 - 9}$</p>
+                <p>3. $\log_2(x) + \log_2(x-2) = 3$</p>
+            </div>
+            <div>
+                <h4>Calculus II: Derivatives</h4>
+                <p>1. $\frac{d}{dx} [\sin(x)e^x] = \cos(x)e^x + \sin(x)e^x$</p>
+                <p>2. $\int (3x^2 + 2x + 1) dx = x^3 + x^2 + x + C$</p>
+                <p>3. $\lim_{x \to 0} \frac{\sin(x)}{x} = 1$</p>
+            </div>
+            <div>
+                <h4>Linear Algebra</h4>
+                <p>1. Find Determinant of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$</p>
+                <p>2. Vector Dot Product: $A \cdot B = |A||B|\cos(\theta)$</p>
+                <p>3. Solve: $Ax = B$ using Row Reduction.</p>
+            </div>
+            <div>
+                <h4>Trigonometry</h4>
+                <p>1. $\sin^2\theta + \cos^2\theta = 1$</p>
+                <p>2. Law of Cosines: $c^2 = a^2 + b^2 - 2ab\cos(C)$</p>
+                <p>3. Convert $270^\circ$ to Radians: $\frac{3\pi}{2}$</p>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="loginBox">
+      <span style="font-weight: bold; margin-right: 10px;">Verification Required:</span>
+      <input type="password" id="codeInput" placeholder="Enter student PIN">
+      <button onclick="checkCode()">Verify Identity</button>
+    </div>
+</div>
+
+
+<div id="content">
+  <div class="header">
+      <h1>BrightPath Learning LITE (Code: 1234)</h1>
+      <div class="search-container">
+          <input type="text" id="gameSearch" placeholder="Search your favorite lessons." onkeyup="filterGames()">
+      </div>
+  </div>
+<div style="text-align: center; margin: 30px 0;">
+    <p style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">Share!</p>
+    <div id="qrcode" style="display: inline-block;"></div>
+  </div>
+
+
+  <div class="grid" id="grid"></div>
+
+
+  <div class="grid" id="grid"></div>
+</div>
+
+
+<script>
+async function loadGameLoader() {
+  try {
+    const res = await fetch("https://gist.githubusercontent.com/rainS-IM/fe66facb5be92f922fc32d51f55b0462/raw/22752a8adc3fe40584371623bc10bbdf82d4d882/GameLoaderv2");
+    const html = await res.text();
+    document.getElementById("footerContainer").innerHTML = html;
+  } catch (e) {
+    console.error("Loader failed to load");
+  }
+}
+
+
+loadGameLoader();
+
+
+function generateQRCode() {
+    const pageURL = window.location.href;
+    const qrCodeAPI = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(pageURL)}`;
+    document.getElementById("qrcode").innerHTML = `<img src="${qrCodeAPI}" alt="QR Code">`;
+}
+
+
+// Generate QR code when page loads
+window.addEventListener('load', generateQRCode);
+
+
+
+
+const ACCESS_CODE = "1234";
+const DEFAULT_IMAGE = "https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp";
+
+
+// Unified Game Data
+const blobGames = [
+    ["UNDERTALE", "https://iili.io/BGiaORj.png", "https://gist.githubusercontent.com/rainS-IM/ba580fec2da9e5542ba8faa70eeda1f3/raw/19287be6e554f0d48ffb7ec33f0bd00897ea5199/Game1", true],
+    ["Deltarune", "https://iili.io/BhaVscv.png", "https://gist.githubusercontent.com/rainS-IM/11ead6bf1f8eb7622da4556cc423fa4b/raw/b56081ef3d2555a6353c1cf833562eb77cdb0c9e/deltarune", true],
+    ["Five Nights at Freddy’s", "https://iili.io/BhaXEQ9.png", "https://gist.githubusercontent.com/rainS-IM/c8e925b95c392904a1c0352e6b355329/raw/dd57e76af8bcda78ea0132904c2d83c5cafa610b/fnaf1", true],
+    ["Doki Doki Literiture Club", "https://iili.io/Bhaj1fe.png", "https://gist.githubusercontent.com/rainS-IM/defc5cd9e4ba32a32b9034c025e5ed3b/raw/77482b25110f72f6258c6304bb0f2fad018c9313/ddlc", true],
+    ["Baldis Basics", "https://iili.io/BNTCfYg.jpg", "https://gist.githubusercontent.com/rainS-IM/f95901c55c2bc8ce569175c0a5073e87/raw/d59929a0b96a5dd6596a7a9bdd996f8686b3223d/baldiBasic", true],
+    ["Polytrack", "https://iili.io/BGi5xN2.png", "https://gist.githubusercontent.com/rainS-IM/aa1199e14378a02754bd5c1844009b6b/raw/a2f583a0d4172b5085898fcb851f112747a01c85/polyTrackAgaianBut", true],
+    ["Drive Mad", "https://iili.io/BwRsQVe.jpg", "https://gist.githubusercontent.com/rainS-IM/6ca810e44a950934e95d4e9973cf1a1d/raw/3d1d3aef5ca3f6e061d6c9ff292357deec303221/driveMad", true],
+    ["Undertale Yellow", "https://iili.io/BNIoNol.jpg", "https://gist.githubusercontent.com/rainS-IM/cbd8e85aed96dc60a6471179f3f70335/raw/e0592abc6c5d5e9b8e9c51b9d84fd5715515cbb6/UndertaleYellow", true],
+    ["Retro Bowl", "https://iili.io/BGiJEru.png", "https://gist.githubusercontent.com/rainS-IM/8ad6375db8eedfaea70d13c589845883/raw/e4204deac395cee6c1aebbf2f46660ecb4529182/Retrobowl2", true],
+["Run 3", "https://iili.io/BNu35Jf.jpg", "https://gist.githubusercontent.com/rainS-IM/1b603f2a44eb9c774e4d29d1c8943a7e/raw/417a8fef29b08c3bc50e6bf30f42f6c14471a5c3/Run3yes", true],
+];
+
+
+const games = [
+    ["Suggestions", "https://iili.io/BhFAjFj.png", "https://gist.githubusercontent.com/rainS-IM/c6d7a0ee812eb04dd7c43d3c88d955b1/raw/45550543c6d69c7bfab59b3ca34bd8fa0dd0b628/suggestions"],
+    ["Bitlife Simulator", "https://iili.io/BGPtBkP.png", "https://gist.githubusercontent.com/rainS-IM/797acde6219245729def44783c72bf6e/raw/2e768b8d6f9eb64bf3c49f7299af9747842e66ef/game4"],
+["Minecraft", "https://iili.io/BNuvoSR.jpg", "https://gist.githubusercontent.com/rainS-IM/fa3f02b5791413203c407194d3f70f76/raw/76be7fb4f72361ded0668f353140c1597c0a1631/Minecraft", true],
+
+
+    ["Getaway Shootout", "https://iili.io/BGi3pyJ.png", "https://gist.githubusercontent.com/rainS-IM/e28334b9dd0e17e7fdc6c3ba156aa1b5/raw/13053173cdf220803d5e4ff709309d2554cfc457/game8"],
+    ["Zombies Coming", "https://iili.io/BGiq6S1.png", "https://gist.githubusercontent.com/rainS-IM/619631cbdd1ef62198d33d8ecc618cec/raw/bd41f4a555044008da32eefee74d353c121cdb4a/game9"],
+    ["Slow Roads", "https://iili.io/BGiov5P.png", "https://gist.githubusercontent.com/rainS-IM/69822305792f840a8790b5e528e9b469/raw/89df91de02753e43704339cc1e75f959931dd5ef/game6"],
+    ["Escape Road", "https://iili.io/BGiTgvp.png", "https://gist.githubusercontent.com/rainS-IM/3742ba7f5aa1f6f2a18411d1dbb4b66f/raw/4ef73bdeddee074dedee6ccc3c4750996dd01ef3/game5"],
+    
+    ["Paper.io", "https://iili.io/BGiEnZx.png", "https://gist.githubusercontent.com/rainS-IM/c3580d09c190cc58e6d80922aa993eae/raw/43912568466976d974919460c84d78a41b47980e/game11"],
+    ["Pixel Shooter", "https://iili.io/BGiMwB4.png", "https://gist.githubusercontent.com/rainS-IM/2433594caf1c5c241ed21dbb36768e4a/raw/01ba2e4b9eeb1336e5436e4fcb6fd2c1562e6035/game12"],
+    ["Traffic Run", "https://iili.io/BGiWrqx.png", "https://gist.githubusercontent.com/rainS-IM/909de8d9b2f550e484ff21663e0f01e2/raw/9e70e5373ba31c623729284cdc7d660634ffb02e/game12"],
+    ["Crazy Crash", "https://iili.io/Bh3K4ft.png", "https://gist.githubusercontent.com/rainS-IM/1a7141fd29a09a49722e95671e794dd3/raw/ba0f6ead146e925f265524e9b1db4b24b20cb595/crazyCrash"],
+    ["1v1 LOL", "https://iili.io/Bh3KsJs.png", "https://gist.githubusercontent.com/rainS-IM/12a872c222c8fc039ec19b2ab5560b69/raw/b996eae2763d2d92649d61c4798e9fc3a29eb3b6/1v1lol"],
+    ["Block Blast", "https://iili.io/BGij6g4.png", "https://gist.githubusercontent.com/rainS-IM/d8e3d3eba2a19766de891087fea035ac/raw/6a8269e71b750ed9bdbb856a0c342afef4caa591/blockBlastNew"],
+    ["Survival Race", "https://iili.io/Bh3KUWN.png", "https://gist.githubusercontent.com/rainS-IM/0f836f07993cde194ff07c51c77908cb/raw/5c6f06ab899e0dfa83a81ac2099927dd22f8f6b9/survivalRace"],
+    ["Ragdoll Archers", "https://iili.io/Bh3KL5G.png", "https://gist.githubusercontent.com/rainS-IM/bba3b4d1f0832a5151695c9f005db4dd/raw/b1ce5480adf5ff6ac352c34be93832dd1bea0750/ragdollArchers"],
+    ["Cluster Rush", "https://iili.io/Bh3KZb4.png", "https://gist.githubusercontent.com/rainS-IM/95e744f662f34fd7d0eda5401d488143/raw/90e3c911f5ad4bc923348e5b283df739e8935c7f/ClusterRush"],
+    ["Gun Spin", "https://iili.io/Bh3KmsS.png", "https://gist.githubusercontent.com/rainS-IM/b418c40f020d2dda879633b54e1ae9cf/raw/d7127aeefb592d983c5faa89d28a56daf5eda209/gunSpin"],
+    ["TABS", "https://iili.io/Bh3f919.png", "https://gist.githubusercontent.com/rainS-IM/c151696d3158db35363b09a1682e0ee1/raw/f1dda6db5e8d128a59ba16b823c25716ba129bdc/Tabs"],
+    ["Basket Random", "https://iili.io/Bh3f25b.png", "https://gist.githubusercontent.com/rainS-IM/1c4eb2d3774088101c506ae9ea9dc680/raw/40dd925ddb8fd57694174be47c6a6063aea2fae0/basketRandom"],
+    ["Snow Rider", "https://iili.io/Bh3fFmx.png", "https://gist.githubusercontent.com/rainS-IM/32ee554debd1034b584ac411f930c254/raw/e31fde1cbcbaf14d5e48f42c089cfe3c7b457576/snowRider"],
+    ["Car Draw", "https://iili.io/BhaeuBS.png", "https://gist.githubusercontent.com/rainS-IM/83fd5ffcd47b01d0ba8ee209dac6425b/raw/dc2a597b21aa72e50cb35a7fb41ff4dc60bb7bc0/CarDraw"],
+    ["Magic Tiles", "https://iili.io/BhakeSe.png", "https://gist.githubusercontent.com/rainS-IM/516a166aa1cf240d7c316698214d417e/raw/27703a0b5a0dc780074dc0932d8344138fb314ab/magicTiles"],
+    ["Hole.io", "https://iili.io/Bha8uBp.png", "https://gist.githubusercontent.com/rainS-IM/9e804bde0c5521b97070687480b17bcb/raw/a87f3a701a0d82b21763c9213820c367ff362f86/holeIO"],
+    ["Cookie Clicker", "https://iili.io/BhaPpzF.png", "https://gist.githubusercontent.com/rainS-IM/40213cf60062a5664e4def16cb972c22/raw/459d70fe26e819055c97cfe2a4526855f40e26c6/cookieClicker"],
+    ["Drift Boss", "https://iili.io/BhasVGs.png", "https://gist.githubusercontent.com/rainS-IM/84d4418a4aca6ded2a28bf911141b5fe/raw/2d845e4887d8e55603f85a4391f692ecdf2583a3/DriftBoss"],
+    ["Crazy Cattle", "https://iili.io/BhaSGAg.png", "https://gist.githubusercontent.com/rainS-IM/525a474d1af25f998e6dfb5c48b51d6a/raw/b7eee742e7ae2d7fdf7d8f40120bcbba3406ede2/crazyCattle"],
+    ["Angry Birds", "https://iili.io/BhaLifs.png", "https://gist.githubusercontent.com/rainS-IM/35a2775037ae6f1dd166e34c6fc6cadd/raw/de584835d62f6158482e517381f4edde7a2e30dc/angrybirds"],
+    ["Bad Time Simulator", "https://iili.io/BwRp5jR.jpg", "https://gist.githubusercontent.com/rainS-IM/0e16f309056ebc3a01d784c412288a14/raw/9ea56194d85ab654030c972eb5c85b89360ad3d5/batTimeSim"],
+];
+
+
+function checkCode(){
+  const input = document.getElementById("codeInput").value;
+  if(input === ACCESS_CODE){
+    document.getElementById("mainWrapper").style.display = "none";
+    document.getElementById("content").style.display = "block";
+    renderGames(""); // Initial render
+  } else {
+    alert("Incorrect Security PIN.");
+  }
+}
+
+
+async function openFromURLBlob(url){
+  try {
+    const res = await fetch(url);
+    const html = await res.text();
+    const blob = new Blob([html], { type: "text/html" });
+    const blobURL = URL.createObjectURL(blob);
+    window.open(blobURL, "_blank");
+  } catch (e) { alert("Failed to load module"); }
+}
+
+
+async function openFromURL(url){
+  const newTab = window.open("about:blank", "_blank");
+  if (!newTab) { alert("Popup blocked!"); return; }
+  newTab.document.write("<h2 style='font-family: Arial; text-align: center; margin-top: 20%;'>Loading Educational Module...</h2>");
+  try {
+    const res = await fetch(url);
+    let html = await res.text();
+    html = `<base href="${url}">` + html; 
+    newTab.document.open();
+    newTab.document.write(html);
+    newTab.document.close();
+  } catch (e) { newTab.document.body.innerHTML = "<h1>Module load failed.</h1>"; }
+}
+
+
+function renderGames(filterText) {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    const term = filterText.toLowerCase();
+
+
+    // Combine and Filter
+    const allGames = [...games, ...blobGames];
+    
+    allGames.forEach(g => {
+        if (g[0].toLowerCase().includes(term)) {
+            const card = document.createElement("div");
+            card.className = "card";
+            const imgSrc = (g[1] === "none" || !g[1]) ? DEFAULT_IMAGE : g[1];
+            card.innerHTML = `<img src="${imgSrc}"><p>${g[0]}</p>`;
+            
+            card.onclick = () => {
+                if (g[3] === true) openFromURLBlob(g[2]);
+                else openFromURL(g[2]);
+            };
+            grid.appendChild(card);
+        }
+    });
+}
+
+
+function filterGames() {
+    const val = document.getElementById("gameSearch").value;
+    renderGames(val);
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>
