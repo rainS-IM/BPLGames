@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp">
 <title>BrightPath Learning</title>
-
-
-
 
 
 
@@ -20,7 +17,6 @@ body {
   min-height: 100vh;
 }
 
-
 .header {
   display: flex;
   flex-direction: column;
@@ -30,31 +26,26 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-
 .header-row {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-
 .header img {
   width: 50px;
   height: 50px;
 }
 
-
 #loginBox, #content {
   display: none;
 }
-
 
 #mathPage {
   padding: 20px;
   max-width: 900px;
   margin: 0 auto 150px auto;
 }
-
 
 .mathBox {
   background: white;
@@ -65,7 +56,6 @@ body {
   margin-bottom: 20px;
 }
 
-
 .math-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -73,7 +63,6 @@ body {
   font-family: "Times New Roman", Times, serif;
   font-size: 1.1em;
 }
-
 
 #loginBox {
   position: fixed;
@@ -91,14 +80,12 @@ body {
   z-index: 100;
 }
 
-
 /* SEARCH FEATURE STYLES */
 .search-container {
     margin-top: 20px;
     width: 100%;
     max-width: 500px;
 }
-
 
 #gameSearch {
     width: 100%;
@@ -110,7 +97,6 @@ body {
     box-sizing: border-box;
 }
 
-
 input {
   padding: 12px;
   border-radius: 6px;
@@ -118,7 +104,6 @@ input {
   width: 200px;
   font-size: 16px;
 }
-
 
 button {
   padding: 12px 24px;
@@ -131,9 +116,7 @@ button {
   transition: background 0.3s;
 }
 
-
 button:hover { background: #e6a100; }
-
 
 .grid {
   display: flex;
@@ -142,7 +125,6 @@ button:hover { background: #e6a100; }
   gap: 20px;
   padding: 40px;
 }
-
 
 .card {
   width: 180px;
@@ -153,9 +135,7 @@ button:hover { background: #e6a100; }
   transition: transform 0.2s;
 }
 
-
 .card:hover { transform: translateY(-5px); }
-
 
 .card img {
   width: 100%;
@@ -163,7 +143,6 @@ button:hover { background: #e6a100; }
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-
 
 .footer {
   width: 100%;
@@ -178,13 +157,10 @@ button:hover { background: #e6a100; }
   backdrop-filter: blur(5px);
 }
 
-
 </style>
 </head>
 <body>
 <div id="footerContainer"></div>
-
-
 
 
 <div id="mainWrapper">
@@ -194,7 +170,6 @@ button:hover { background: #e6a100; }
         <h1>BrightPath Learning v2</h1>
       </div>
     </div>
-
 
     <div id="mathPage">
       <div class="mathBox">
@@ -229,14 +204,12 @@ button:hover { background: #e6a100; }
       </div>
     </div>
 
-
     <div id="loginBox">
       <span style="font-weight: bold; margin-right: 10px;">Verification Required:</span>
       <input type="password" id="codeInput" placeholder="Enter student PIN">
       <button onclick="checkCode()">Verify Identity</button>
     </div>
 </div>
-
 
 <div id="content">
   <div class="header">
@@ -250,13 +223,10 @@ button:hover { background: #e6a100; }
     <div id="qrcode" style="display: inline-block;"></div>
   </div>
 
-
   <div class="grid" id="grid"></div>
-
 
   <div class="grid" id="grid"></div>
 </div>
-
 
 <script>
 async function loadGameLoader() {
@@ -269,9 +239,7 @@ async function loadGameLoader() {
   }
 }
 
-
 loadGameLoader();
-
 
 function generateQRCode() {
     const pageURL = window.location.href;
@@ -279,16 +247,12 @@ function generateQRCode() {
     document.getElementById("qrcode").innerHTML = `<img src="${qrCodeAPI}" alt="QR Code">`;
 }
 
-
 // Generate QR code when page loads
 window.addEventListener('load', generateQRCode);
 
 
-
-
 const ACCESS_CODE = "1234";
 const DEFAULT_IMAGE = "https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp";
-
 
 // Unified Game Data
 const blobGames = [
@@ -302,14 +266,13 @@ const blobGames = [
     ["Undertale Yellow", "https://iili.io/BNIoNol.jpg", "https://gist.githubusercontent.com/rainS-IM/cbd8e85aed96dc60a6471179f3f70335/raw/e0592abc6c5d5e9b8e9c51b9d84fd5715515cbb6/UndertaleYellow", true],
     ["Retro Bowl", "https://iili.io/BGiJEru.png", "https://gist.githubusercontent.com/rainS-IM/8ad6375db8eedfaea70d13c589845883/raw/e4204deac395cee6c1aebbf2f46660ecb4529182/Retrobowl2", true],
 ["Run 3", "https://iili.io/BNu35Jf.jpg", "https://gist.githubusercontent.com/rainS-IM/1b603f2a44eb9c774e4d29d1c8943a7e/raw/417a8fef29b08c3bc50e6bf30f42f6c14471a5c3/Run3yes", true],
+["Stick Slasher", "https://iili.io/BU2DSkJ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/stickslasher.html"],
 ];
-
 
 const games = [
     ["Suggestions", "https://iili.io/BhFAjFj.png", "https://gist.githubusercontent.com/rainS-IM/c6d7a0ee812eb04dd7c43d3c88d955b1/raw/45550543c6d69c7bfab59b3ca34bd8fa0dd0b628/suggestions"],
     ["Bitlife Simulator", "https://iili.io/BGPtBkP.png", "https://gist.githubusercontent.com/rainS-IM/797acde6219245729def44783c72bf6e/raw/2e768b8d6f9eb64bf3c49f7299af9747842e66ef/game4"],
 ["Minecraft", "https://iili.io/BNuvoSR.jpg", "https://gist.githubusercontent.com/rainS-IM/fa3f02b5791413203c407194d3f70f76/raw/76be7fb4f72361ded0668f353140c1597c0a1631/Minecraft", true],
-
 
     ["Getaway Shootout", "https://iili.io/BGi3pyJ.png", "https://gist.githubusercontent.com/rainS-IM/e28334b9dd0e17e7fdc6c3ba156aa1b5/raw/13053173cdf220803d5e4ff709309d2554cfc457/game8"],
     ["Zombies Coming", "https://iili.io/BGiq6S1.png", "https://gist.githubusercontent.com/rainS-IM/619631cbdd1ef62198d33d8ecc618cec/raw/bd41f4a555044008da32eefee74d353c121cdb4a/game9"],
@@ -339,7 +302,6 @@ const games = [
     ["Bad Time Simulator", "https://iili.io/BwRp5jR.jpg", "https://gist.githubusercontent.com/rainS-IM/0e16f309056ebc3a01d784c412288a14/raw/9ea56194d85ab654030c972eb5c85b89360ad3d5/batTimeSim"],
 ];
 
-
 function checkCode(){
   const input = document.getElementById("codeInput").value;
   if(input === ACCESS_CODE){
@@ -351,7 +313,6 @@ function checkCode(){
   }
 }
 
-
 async function openFromURLBlob(url){
   try {
     const res = await fetch(url);
@@ -361,7 +322,6 @@ async function openFromURLBlob(url){
     window.open(blobURL, "_blank");
   } catch (e) { alert("Failed to load module"); }
 }
-
 
 async function openFromURL(url){
   const newTab = window.open("about:blank", "_blank");
@@ -377,12 +337,10 @@ async function openFromURL(url){
   } catch (e) { newTab.document.body.innerHTML = "<h1>Module load failed.</h1>"; }
 }
 
-
 function renderGames(filterText) {
     const grid = document.getElementById("grid");
     grid.innerHTML = "";
     const term = filterText.toLowerCase();
-
 
     // Combine and Filter
     const allGames = [...games, ...blobGames];
@@ -403,17 +361,17 @@ function renderGames(filterText) {
     });
 }
 
-
 function filterGames() {
     const val = document.getElementById("gameSearch").value;
     renderGames(val);
 }
 
 
-
-
 </script>
-
 
 </body>
 </html>
+
+
+
+
