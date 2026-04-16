@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subway Loader</title>
+</head>
+<body>
+    <div id="content">Loading page content...</div>
+
+    <script>
+        // The jsDelivr URL for your raw HTML data
+        const url = 'https://cdn.jsdelivr.net/gh/rainS-IM/BPLGames@main/clsubwaysurfersbarcelona.html';
+
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                // This replaces the current page content with the raw HTML data
+                document.open();
+                document.write(data);
+                document.close();
+            })
+            .catch(err => {
+                console.error('Failed to load page:', err);
+                document.getElementById('content').innerText = 'Error loading content.';
+            });
+    </script>
+</body>
+</html>
+
