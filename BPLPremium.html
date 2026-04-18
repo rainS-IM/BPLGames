@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp">
 <title>BrightPath Learning</title>
@@ -9,9 +10,12 @@
 
 <style>
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
   margin: 0;
-  background: linear-gradient(135deg, #6aa0f7, #3776db);
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1), transparent 40%),
+    linear-gradient(135deg, #4f7cff, #6aa0f7, #3776db);
   color: #333;
   text-align: center;
   min-height: 100vh;
@@ -157,12 +161,48 @@ button:hover { background: #e6a100; }
   backdrop-filter: blur(5px);
 }
 
+#footerContainer, #footerContainer * {
+  position: static !important;
+}
+
+#footerContainer {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.copy-btn {
+  margin-top: 12px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.2s;
+}
+
+.copy-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Individual colors */
+.discord {
+  background: #5865F2;
+}
+
+.suggestions {
+  background: #22c55e;
+}
+
+.help {
+  background: #db2525;
+}
 
 </style>
 </head>
 
 <body>
-<div id="footerContainer"></div>
 
 <div id="mainWrapper">
     <div class="header">
@@ -188,31 +228,34 @@ button:hover { background: #e6a100; }
 </div>
 
         <div class="math-grid">
-            <div>
-                <h4>Algebraic Functions</h4>
-                <p>1. Solve for $x$: $2x^2 + 5x - 3 = 0$</p>
-                <p>2. Simplify: $\frac{(x + 3)(x - 3)}{x^2 - 9}$</p>
-                <p>3. $\log_2(x) + \log_2(x-2) = 3$</p>
-            </div>
-            <div>
-                <h4>Calculus II: Derivatives</h4>
-                <p>1. $\frac{d}{dx} [\sin(x)e^x] = \cos(x)e^x + \sin(x)e^x$</p>
-                <p>2. $\int (3x^2 + 2x + 1) dx = x^3 + x^2 + x + C$</p>
-                <p>3. $\lim_{x \to 0} \frac{\sin(x)}{x} = 1$</p>
-            </div>
-            <div>
-                <h4>Linear Algebra</h4>
-                <p>1. Find Determinant of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$</p>
-                <p>2. Vector Dot Product: $A \cdot B = |A||B|\cos(\theta)$</p>
-                <p>3. Solve: $Ax = B$ using Row Reduction.</p>
-            </div>
-            <div>
-                <h4>Trigonometry</h4>
-                <p>1. $\sin^2\theta + \cos^2\theta = 1$</p>
-                <p>2. Law of Cosines: $c^2 = a^2 + b^2 - 2ab\cos(C)$</p>
-                <p>3. Convert $270^\circ$ to Radians: $\frac{3\pi}{2}$</p>
-            </div>
-        </div>
+  <div>
+    <h4>Algebra</h4>
+    <p>1. Solve: 2x² + 5x − 3 = 0</p>
+    <p>2. Simplify: (x + 3)(x − 3) ÷ (x² − 9)</p>
+    <p>3. log₂(x(x−2)) = 3</p>
+  </div>
+
+  <div>
+    <h4>Derivatives</h4>
+    <p>1. d/dx [sin(x)eˣ] = eˣ(cos(x) + sin(x))</p>
+    <p>2. ∫(3x² + 2x + 1)dx = x³ + x² + x + C</p>
+    <p>3. lim (sin x / x) = 1</p>
+  </div>
+
+  <div>
+    <h4>Linear Algebra</h4>
+    <p>1. det = ad − bc</p>
+    <p>2. A·B = |A||B|cosθ</p>
+    <p>3. Solve Ax = B</p>
+  </div>
+
+  <div>
+    <h4>Trig</h4>
+    <p>1. sin²θ + cos²θ = 1</p>
+    <p>2. c² = a² + b² − 2ab cos(C)</p>
+    <p>3. 270° = 3π/2</p>
+  </div>
+</div>
       </div>
     </div>
 
@@ -229,13 +272,45 @@ button:hover { background: #e6a100; }
       <h1>BrightPath Learning v2</h1>
       <div class="search-container">
           <input type="text" id="gameSearch" placeholder="Search your favorite lessons." onkeyup="filterGames()">
-<p class="search-text">If a tab doesn’t open, please disable block popups! Copy this link if you need a tutorial: https://www.youtube.com/watch?v=TyN4uyMg-Is</p>
+<p class="search-text">If a tab doesn’t open, please disable block popups! Click the “Popup Help” button below if you need a tutorial.</p>
+<button class="copy-btn discord" data-link="https://discord.gg/2fKB7N3rsM" onclick="handleLinkButton(this)">
+  Discord
+</button>
+
+<button class="copy-btn suggestions" data-link="https://docs.google.com/forms/d/e/1FAIpQLSeCou6P1QRWKZvSmsKo6aOb3639b5mgEwjmMysVeSylJDJfWw/viewform?usp=header" onclick="handleLinkButton(this)">
+  Suggestions
+</button>
+
+<button class="copy-btn help" data-link="https://www.youtube.com/watch?v=TyN4uyMg-Is" onclick="handleLinkButton(this)">
+  Popup Help
+</button>
+
+
+
       </div>
+
   </div>
   <div class="grid" id="grid"></div>
 </div>
 
+
 <script>
+
+function handleLinkButton(btn) {
+  const url = btn.dataset.link;
+
+  navigator.clipboard.writeText(url).then(() => {
+    window.open(url, "_blank");
+    const original = btn.innerText;
+    btn.innerText = "Copied! Opening...";
+    
+    setTimeout(() => {
+      btn.innerText = original;
+    }, 2000);
+  }).catch(() => {
+    window.open(url, "_blank");
+  });
+}
 
 async function loadGameLoader() {
   try {
@@ -249,7 +324,7 @@ async function loadGameLoader() {
 
 loadGameLoader();
 
-const ACCESS_CODE = "Rain67";
+const ACCESS_CODE = "6741LOL";
 const DEFAULT_IMAGE = "https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp";
 
 // Unified Game Data
@@ -259,6 +334,7 @@ const blobGames = [
     ["Five Nights at Freddy’s", "https://iili.io/BhaXEQ9.png", "https://gist.githubusercontent.com/rainS-IM/c8e925b95c392904a1c0352e6b355329/raw/dd57e76af8bcda78ea0132904c2d83c5cafa610b/fnaf1", true],
 ["Five Nights at Freddy’s 2", "https://iili.io/BvDB7AN.webp", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clFNAF2.html", true],
 ["Five Nights at Freddy’s 3", "https://iili.io/BvDxiYJ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clFNAF3.html", true],
+["Five Nights at Freddy’s 4", "https://iili.io/BgAmurg.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clFNAF4.html", true],
     ["Doki Doki Literiture Club", "https://iili.io/Bhaj1fe.png", "https://gist.githubusercontent.com/rainS-IM/defc5cd9e4ba32a32b9034c025e5ed3b/raw/77482b25110f72f6258c6304bb0f2fad018c9313/ddlc", true],
     ["Baldis Basics", "https://iili.io/BNTCfYg.jpg", "https://gist.githubusercontent.com/rainS-IM/f95901c55c2bc8ce569175c0a5073e87/raw/d59929a0b96a5dd6596a7a9bdd996f8686b3223d/baldiBasic", true],
     ["Polytrack", "https://iili.io/BGi5xN2.png", "https://gist.githubusercontent.com/rainS-IM/aa1199e14378a02754bd5c1844009b6b/raw/a2f583a0d4172b5085898fcb851f112747a01c85/polyTrackAgaianBut", true],
@@ -298,13 +374,38 @@ const blobGames = [
 ["Edge Not Found", "https://iili.io/BU22WAX.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/edgenotfound.html", true],
 ["10 Minutes Till Dawn", "https://iili.io/BU23A0l.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cl10minutestildawn.html", true],
 ["Celeste", "https://iili.io/BU23hdB.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/celeste.html", true],
-["Spiral Roll", "https://example.com", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/spiralroll.html", true],
+["Spiral Roll", "https://iili.io/BUiAAw7.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/spiralroll.html", true],
+
+["Stick Slasher", "https://iili.io/BU2DSkJ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/stickslasher.html"],
+["Stick With It", "https://iili.io/BUiREfs.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clstickwithit.html"],
+["Bloons TD", "https://iili.io/BUi5ABe.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbloonsTD1.html "],
+["Bloons TD 2", "https://iili.io/BUi5gGn.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbloonsTD2.html "],
+["Bloons TD 3", "https://iili.io/BUi7C6g.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbloonsTD3.html "],
+["Bloons TD 4", "https://iili.io/BUi7wPe.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbloonsTD4.html "],
+["Bloons TD 5", "https://iili.io/BUi7mDN.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbtd5.html "],
+["Happy Wheels", "https://iili.io/BUiaABt.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clhappywheels.html "],
+["Papa’s Pizzaeria", "https://iili.io/BUiYIfe.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/pizza.html "],
+["Papa’s Hotdogeria", "https://iili.io/BUiYX5v.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/hotdog.html"],
+["Brotato", "https://iili.io/BgAmy8J.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbrotato.html"],
+
+
+["We Become What We Behold", "https://iili.io/BgAy9f9.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clwebecomewhatwebehold.html", true],
+["Friday Night Funkin", "https://iili.io/BgR9dBI.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clfridaynightfunkin.html", true],
+["Melon Playground", "https://iili.io/BgR9OjR.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clmelonplayground.html"],
+["Famidash (Geometry Dash)", "https://iili.io/BgRIEOl.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clfamidash.html", true],
+
+
+["War The Knight", "https://iili.io/BgR9mF9.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clwartheknight.html"],
+
 ];
 
+
+
+
 const games = [
-    ["Suggestions", "https://iili.io/BhFAjFj.png", "https://gist.githubusercontent.com/rainS-IM/c6d7a0ee812eb04dd7c43d3c88d955b1/raw/45550543c6d69c7bfab59b3ca34bd8fa0dd0b628/suggestions"],
+
     ["Bitlife Simulator", "https://iili.io/BGPtBkP.png", "https://gist.githubusercontent.com/rainS-IM/797acde6219245729def44783c72bf6e/raw/2e768b8d6f9eb64bf3c49f7299af9747842e66ef/game4"],
-["Minecraft", "https://iili.io/BNuvoSR.jpg", "https://gist.githubusercontent.com/rainS-IM/fa3f02b5791413203c407194d3f70f76/raw/76be7fb4f72361ded0668f353140c1597c0a1631/Minecraft", true],
+["Minecraft", "https://iili.io/BNuvoSR.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clmine.html ", true],
 
     ["Getaway Shootout", "https://iili.io/BGi3pyJ.png", "https://gist.githubusercontent.com/rainS-IM/e28334b9dd0e17e7fdc6c3ba156aa1b5/raw/13053173cdf220803d5e4ff709309d2554cfc457/game8"],
     ["Zombies Coming", "https://iili.io/BGiq6S1.png", "https://gist.githubusercontent.com/rainS-IM/619631cbdd1ef62198d33d8ecc618cec/raw/bd41f4a555044008da32eefee74d353c121cdb4a/game9"],
@@ -418,7 +519,7 @@ function filterGames() {
 </script>
 
 
-
+<div id="footerContainer"></div>
 </body>
 </html>
 
