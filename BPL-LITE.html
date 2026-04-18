@@ -157,6 +157,36 @@ button:hover { background: #e6a100; }
   backdrop-filter: blur(5px);
 }
 
+.copy-btn {
+  margin-top: 12px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.2s;
+}
+
+.copy-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Individual colors */
+.discord {
+  background: #5865F2;
+}
+
+.suggestions {
+  background: #22c55e;
+}
+
+.help {
+  background: #db2525;
+}
+
+  
 </style>
 </head>
 <body>
@@ -175,34 +205,49 @@ button:hover { background: #e6a100; }
       <div class="mathBox">
         <h2 style="text-align: center; color: #ffb300;">Unit 4: Advanced STEM Curriculum</h2>
         <hr>
+<div style="margin: 20px 0; text-align: center;">
+  <iframe width="100%" height="315"
+    src="https://www.youtube.com/embed/WsQQvHm4lSw?si=2DPWbcmi3wX0C-_R"
+    title="Math Learning Video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="border-radius: 12px;">
+  </iframe>
+</div>
+
         <div class="math-grid">
-            <div>
-                <h4>Algebraic Functions</h4>
-                <p>1. Solve for $x$: $2x^2 + 5x - 3 = 0$</p>
-                <p>2. Simplify: $\frac{(x + 3)(x - 3)}{x^2 - 9}$</p>
-                <p>3. $\log_2(x) + \log_2(x-2) = 3$</p>
-            </div>
-            <div>
-                <h4>Calculus II: Derivatives</h4>
-                <p>1. $\frac{d}{dx} [\sin(x)e^x] = \cos(x)e^x + \sin(x)e^x$</p>
-                <p>2. $\int (3x^2 + 2x + 1) dx = x^3 + x^2 + x + C$</p>
-                <p>3. $\lim_{x \to 0} \frac{\sin(x)}{x} = 1$</p>
-            </div>
-            <div>
-                <h4>Linear Algebra</h4>
-                <p>1. Find Determinant of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$</p>
-                <p>2. Vector Dot Product: $A \cdot B = |A||B|\cos(\theta)$</p>
-                <p>3. Solve: $Ax = B$ using Row Reduction.</p>
-            </div>
-            <div>
-                <h4>Trigonometry</h4>
-                <p>1. $\sin^2\theta + \cos^2\theta = 1$</p>
-                <p>2. Law of Cosines: $c^2 = a^2 + b^2 - 2ab\cos(C)$</p>
-                <p>3. Convert $270^\circ$ to Radians: $\frac{3\pi}{2}$</p>
-            </div>
-        </div>
+  <div>
+    <h4>Algebra</h4>
+    <p>1. Solve: 2x² + 5x − 3 = 0</p>
+    <p>2. Simplify: (x + 3)(x − 3) ÷ (x² − 9)</p>
+    <p>3. log₂(x(x−2)) = 3</p>
+  </div>
+
+  <div>
+    <h4>Derivatives</h4>
+    <p>1. d/dx [sin(x)eˣ] = eˣ(cos(x) + sin(x))</p>
+    <p>2. ∫(3x² + 2x + 1)dx = x³ + x² + x + C</p>
+    <p>3. lim (sin x / x) = 1</p>
+  </div>
+
+  <div>
+    <h4>Linear Algebra</h4>
+    <p>1. det = ad − bc</p>
+    <p>2. A·B = |A||B|cosθ</p>
+    <p>3. Solve Ax = B</p>
+  </div>
+
+  <div>
+    <h4>Trig</h4>
+    <p>1. sin²θ + cos²θ = 1</p>
+    <p>2. c² = a² + b² − 2ab cos(C)</p>
+    <p>3. 270° = 3π/2</p>
+  </div>
+</div>
       </div>
     </div>
+
 
     <div id="loginBox">
       <span style="font-weight: bold; margin-right: 10px;">Verification Required:</span>
@@ -216,6 +261,19 @@ button:hover { background: #e6a100; }
       <h1>BrightPath Learning LITE (Code: 1234)</h1>
       <div class="search-container">
           <input type="text" id="gameSearch" placeholder="Search your favorite lessons." onkeyup="filterGames()">
+        <p class="search-text">If a tab doesn’t open, please disable block popups! Click the “Popup Help” button below if you need a tutorial.</p>
+<button class="copy-btn discord" data-link="https://discord.gg/2fKB7N3rsM" onclick="handleLinkButton(this)">
+  Discord
+</button>
+
+<button class="copy-btn suggestions" data-link="https://docs.google.com/forms/d/e/1FAIpQLSeCou6P1QRWKZvSmsKo6aOb3639b5mgEwjmMysVeSylJDJfWw/viewform?usp=header" onclick="handleLinkButton(this)">
+  Suggestions
+</button>
+
+<button class="copy-btn help" data-link="https://www.youtube.com/watch?v=TyN4uyMg-Is" onclick="handleLinkButton(this)">
+  Popup Help
+</button>
+
       </div>
   </div>
 <div style="text-align: center; margin: 30px 0;">
@@ -274,9 +332,9 @@ const blobGames = [
 ];
 
 const games = [
-    ["Suggestions", "https://iili.io/BhFAjFj.png", "https://gist.githubusercontent.com/rainS-IM/c6d7a0ee812eb04dd7c43d3c88d955b1/raw/45550543c6d69c7bfab59b3ca34bd8fa0dd0b628/suggestions"],
+   
     ["Bitlife Simulator", "https://iili.io/BGPtBkP.png", "https://gist.githubusercontent.com/rainS-IM/797acde6219245729def44783c72bf6e/raw/2e768b8d6f9eb64bf3c49f7299af9747842e66ef/game4"],
-["Minecraft", "https://iili.io/BNuvoSR.jpg", "https://gist.githubusercontent.com/rainS-IM/fa3f02b5791413203c407194d3f70f76/raw/76be7fb4f72361ded0668f353140c1597c0a1631/Minecraft", true],
+["Minecraft", "https://iili.io/BNuvoSR.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clmine.html ", true],
 
     ["Getaway Shootout", "https://iili.io/BGi3pyJ.png", "https://gist.githubusercontent.com/rainS-IM/e28334b9dd0e17e7fdc6c3ba156aa1b5/raw/13053173cdf220803d5e4ff709309d2554cfc457/game8"],
     ["Zombies Coming", "https://iili.io/BGiq6S1.png", "https://gist.githubusercontent.com/rainS-IM/619631cbdd1ef62198d33d8ecc618cec/raw/bd41f4a555044008da32eefee74d353c121cdb4a/game9"],
