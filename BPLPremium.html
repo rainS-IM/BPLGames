@@ -223,9 +223,197 @@ button:hover { background: #e6a100; }
 }
 
 
+.tiktok {
+  background: #400559;
+}
+
+
 .help {
   background: #db2525;
 }
+
+
+/* Settings Button */
+.settings-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  z-index: 50;
+}
+
+
+.settings-btn:hover {
+  transform: rotate(20deg);
+}
+
+
+/* Settings Page */
+#settingsPage {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.settings-container {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+
+.settings-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+
+
+.settings-close-btn:hover {
+  color: #ff6b6b;
+}
+
+
+.settings-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+
+.settings-option {
+  margin-bottom: 25px;
+}
+
+
+.settings-option label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+
+.color-picker {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+.color-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+
+.color-option.active {
+  border-color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+#popupsPage {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 300;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.popupsContainer {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+
+.popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 22px;
+  background: #ff4d4d;  
+  color: white;         
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.popup-close-btn:hover {
+  background: #e63939;
+}
+
+
+
+
+.popup-btn {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ffb300;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.popup-btn.alt {
+  background: #4f7cff;
+}
+
+
+
+
 
 
 </style>
@@ -267,6 +455,8 @@ function trackGame(name) {
         <img src="https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp">
         <h1>BrightPath Learning v2</h1>
       </div>
+
+
     </div>
 
 
@@ -334,11 +524,21 @@ function trackGame(name) {
   <div class="header">
       <img src="https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp">
       <h1>BrightPath Learning v2</h1>
+<button class="settings-btn" onclick="openSettings()" title="Settings">⚙️</button>
+
+
       <div class="search-container">
           <input type="text" id="gameSearch" placeholder="Search your favorite lessons." onkeyup="filterGames()">
 <p class="search-text">If a tab doesn’t open, please disable block popups! Click the “Popup Help” button below if you need a tutorial.</p>
 <button class="copy-btn discord" data-link="https://discord.gg/2fKB7N3rsM" onclick="handleLinkButton(this)">
   Discord
+</button>
+
+
+
+
+<button class="copy-btn tiktok" data-link="https://www.tiktok.com/@brightpath254" onclick="handleLinkButton(this)">
+  Tiktok
 </button>
 
 
@@ -364,9 +564,63 @@ function trackGame(name) {
 </div>
 
 
+<!-- Settings Page -->
+<div id="settingsPage">
+  <div class="settings-container">
+    <button class="settings-close-btn" onclick="closeSettings()">✕</button>
+    <h2 class="settings-title">Settings</h2>
+    
+    <div class="settings-option">
+      <label>Background Color:</label>
+      <div class="color-picker">
+        <div class="color-option active" style="background: linear-gradient(135deg, #4f7cff, #6aa0f7, #3776db);" onclick="changeBackground('linear-gradient(135deg, #4f7cff, #6aa0f7, #3776db)')"></div>
+        <div class="color-option" style="background: linear-gradient(135deg, #667eea, #764ba2);" onclick="changeBackground('linear-gradient(135deg, #667eea, #764ba2)')"></div>
+        <div class="color-option" style="background: linear-gradient(135deg, #f093fb, #f5576c);" onclick="changeBackground('linear-gradient(135deg, #f093fb, #f5576c)')"></div>
+<div class="color-option" style="background: linear-gradient(135deg, #ebe834, #f0ec11);" onclick="changeBackground('linear-gradient(135deg, #ebe834, #f0ec11)')"></div>
+        <div class="color-option" style="background: linear-gradient(135deg, #4facfe, #00f2fe);" onclick="changeBackground('linear-gradient(135deg, #4facfe, #00f2fe)')"></div>
+        <div class="color-option" style="background: linear-gradient(135deg, #43e97b, #38f9d7);" onclick="changeBackground('linear-gradient(135deg, #43e97b, #38f9d7)')"></div>
+        <div class="color-option" style="background: linear-gradient(135deg, #fa709a, #fee140);" onclick="changeBackground('linear-gradient(135deg, #fa709a, #fee140)')"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="popupsPage">
+  <div class="popupsContainer">
+    <button class="popup-close-btn" onclick="closePopup()">✕</button>
+    <h2 class="popup-title">Important!</h2>
+    
+    <p>Some devices block popups. You need them enabled for certain games.</p>
+
+
+    <button class="popup-btn" onclick="window.open('https://drive.google.com/file/d/1Pc1_ypdFQsV7o2wXHkbNmkqq-ZniBSnJ/view?usp=sharing', '_blank')">
+      Safari
+    </button>
+
+
+    <button class="popup-btn alt" onclick="window.open('https://drive.google.com/file/d/1sNE2dklzRUNQdkPaSlYh7wgPLxgCXRbT/view?usp=sharing', '_blank')">
+      Chrome
+    </button>
+  </div>
+</div>
+
+
+
+
 
 
 <script>
+function openPopup() {
+if(localStorage.getItem('popupBlock') != "true"){
+  document.getElementById("popupsPage").style.display = "flex";
+};
+
+
+  
+}
+
+
 
 
 function handleLinkButton(btn) {
@@ -401,7 +655,7 @@ async function loadGameLoader() {
 loadGameLoader();
 
 
-const ACCESS_CODE = "Rain67!";
+const ACCESS_CODE = "1234";
 const DEFAULT_IMAGE = "https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp";
 
 
@@ -409,6 +663,8 @@ const DEFAULT_IMAGE = "https://res.cloudinary.com/dfkbpbafl/image/upload/v177586
 const blobGames = [
     ["UNDERTALE", "https://iili.io/BGiaORj.png", "https://gist.githubusercontent.com/rainS-IM/ba580fec2da9e5542ba8faa70eeda1f3/raw/19287be6e554f0d48ffb7ec33f0bd00897ea5199/Game1", true],
     ["Deltarune", "https://iili.io/BhaVscv.png", "https://gist.githubusercontent.com/rainS-IM/11ead6bf1f8eb7622da4556cc423fa4b/raw/b56081ef3d2555a6353c1cf833562eb77cdb0c9e/deltarune", true],
+    ["Undertale Yellow", "https://iili.io/BNIoNol.jpg", "https://gist.githubusercontent.com/rainS-IM/cbd8e85aed96dc60a6471179f3f70335/raw/e0592abc6c5d5e9b8e9c51b9d84fd5715515cbb6/UndertaleYellow", true],
+["Undertale Last Breath", "https://iili.io/BrTAag2.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clundertalelb.html ", true],
     ["Five Nights at Freddy’s", "https://iili.io/BhaXEQ9.png", "https://gist.githubusercontent.com/rainS-IM/c8e925b95c392904a1c0352e6b355329/raw/dd57e76af8bcda78ea0132904c2d83c5cafa610b/fnaf1", true],
 ["Five Nights at Freddy’s 2", "https://iili.io/BvDB7AN.webp", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clFNAF2.html", true],
 ["Five Nights at Freddy’s 3", "https://iili.io/BvDxiYJ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clFNAF3.html", true],
@@ -417,7 +673,8 @@ const blobGames = [
     ["Baldis Basics", "https://iili.io/BNTCfYg.jpg", "https://gist.githubusercontent.com/rainS-IM/f95901c55c2bc8ce569175c0a5073e87/raw/d59929a0b96a5dd6596a7a9bdd996f8686b3223d/baldiBasic", true],
     ["Polytrack", "https://iili.io/BGi5xN2.png", "https://gist.githubusercontent.com/rainS-IM/aa1199e14378a02754bd5c1844009b6b/raw/a2f583a0d4172b5085898fcb851f112747a01c85/polyTrackAgaianBut", true],
     ["Drive Mad", "https://iili.io/BwRsQVe.jpg", "https://gist.githubusercontent.com/rainS-IM/6ca810e44a950934e95d4e9973cf1a1d/raw/3d1d3aef5ca3f6e061d6c9ff292357deec303221/driveMad", true],
-    ["Undertale Yellow", "https://iili.io/BNIoNol.jpg", "https://gist.githubusercontent.com/rainS-IM/cbd8e85aed96dc60a6471179f3f70335/raw/e0592abc6c5d5e9b8e9c51b9d84fd5715515cbb6/UndertaleYellow", true],
+
+
     ["Retro Bowl", "https://iili.io/BGiJEru.png", "https://gist.githubusercontent.com/rainS-IM/8ad6375db8eedfaea70d13c589845883/raw/e4204deac395cee6c1aebbf2f46660ecb4529182/Retrobowl2", true],
 ["Run 3", "https://iili.io/BNu35Jf.jpg", "https://gist.githubusercontent.com/rainS-IM/1b603f2a44eb9c774e4d29d1c8943a7e/raw/417a8fef29b08c3bc50e6bf30f42f6c14471a5c3/Run3yes", true],
 ["Backrooms", "https://iili.io/BkUlOYb.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbackrooms.html", true],
@@ -486,6 +743,19 @@ const blobGames = [
 ["Infinite Craft", "https://iili.io/BgrLCOB.webp", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clinfinitecraft.html ", true],
 
 
+
+
+["Push Your Luck", "https://iili.io/BrTXMIj.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clpushyourluck.html ", true],
+["Grow a Garden", "https://iili.io/BrThu8F.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clgrowagarden.html ", true],
+["Slice Master", "https://iili.io/BrThjtf.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clslicemaster.html ", true],
+["Indian Truck Simulator", "https://iili.io/BrThDS1.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cltrucksim.html ", true],
+["Idle Dice", "https://iili.io/BrTjYJ9.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clidledice.html ", true],
+["Eggy Car", "https://iili.io/BrTjW0B.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cleggycar.html ", true],
+["99 Balls", "https://iili.io/BrTwY1p.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cl99balls.html ", true],
+["Tiny Fishing", "https://iili.io/BrTwLYP.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cltinyfishing.html ", true],
+["Johnny Trigger", "https://iili.io/BrTNBZG.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cljohnnytrigger.html ", true],
+
+
 ];
 
 
@@ -502,7 +772,7 @@ const games = [
     ["Getaway Shootout", "https://iili.io/BGi3pyJ.png", "https://gist.githubusercontent.com/rainS-IM/e28334b9dd0e17e7fdc6c3ba156aa1b5/raw/13053173cdf220803d5e4ff709309d2554cfc457/game8"],
     ["Zombies Coming", "https://iili.io/BGiq6S1.png", "https://gist.githubusercontent.com/rainS-IM/619631cbdd1ef62198d33d8ecc618cec/raw/bd41f4a555044008da32eefee74d353c121cdb4a/game9"],
     ["Slow Roads", "https://iili.io/BGiov5P.png", "https://gist.githubusercontent.com/rainS-IM/69822305792f840a8790b5e528e9b469/raw/89df91de02753e43704339cc1e75f959931dd5ef/game6"],
-    ["Escape Road", "https://iili.io/BGiTgvp.png", "https://gist.githubusercontent.com/rainS-IM/3742ba7f5aa1f6f2a18411d1dbb4b66f/raw/4ef73bdeddee074dedee6ccc3c4750996dd01ef3/game5"],
+    ["Escape Road", "https://iili.io/BGiTgvp.png", "https://gist.githubusercontent.com/rainS-IM/3742ba7f5aa1f6f2a18411d1dbb4b66f/raw/4ef73bdeddee074dedee6ccc3c4750996dd01ef3/game5", true],
     
     ["Paper.io", "https://iili.io/BGiEnZx.png", "https://gist.githubusercontent.com/rainS-IM/c3580d09c190cc58e6d80922aa993eae/raw/43912568466976d974919460c84d78a41b47980e/game11"],
     ["Pixel Shooter", "https://iili.io/BGiMwB4.png", "https://gist.githubusercontent.com/rainS-IM/2433594caf1c5c241ed21dbb36768e4a/raw/01ba2e4b9eeb1336e5436e4fcb6fd2c1562e6035/game12"],
@@ -534,6 +804,7 @@ function checkCode(){
     document.getElementById("mainWrapper").style.display = "none";
     document.getElementById("content").style.display = "block";
     localStorage.setItem('enterWebsite', 'true');
+    openPopup()
     renderGames(""); // Initial render
   } else {
   if(input === "6741"){
@@ -550,9 +821,54 @@ if(localStorage.getItem('enterWebsite') == "true"){
 
     document.getElementById("mainWrapper").style.display = "none";
     document.getElementById("content").style.display = "block";
-    
+    openPopup()
     renderGames(""); // Initial render
 };
+
+
+function openSettings() {
+  document.getElementById("settingsPage").style.display = "flex";
+}
+
+
+function closePopup() {
+  document.getElementById("popupsPage").style.display = "none";
+  localStorage.setItem('popupBlock', 'true');
+}
+
+
+
+
+
+
+
+
+
+
+function closeSettings() {
+  document.getElementById("settingsPage").style.display = "none";
+}
+
+
+function changeBackground(gradient) {
+  document.body.style.background = gradient;
+  localStorage.setItem('bgColor', gradient);
+  
+  // Update active state
+  document.querySelectorAll('.color-option').forEach(el => el.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+
+// Load saved background on page load
+window.addEventListener('load', () => {
+  const saved = localStorage.getItem('bgColor');
+  if (saved) {
+    document.body.style.background = saved;
+  }
+});
+
+
 
 
 async function openFromURLBlob(url){
