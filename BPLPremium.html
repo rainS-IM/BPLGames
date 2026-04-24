@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -7,22 +7,32 @@
 <title>BrightPath Learning</title>
 
 
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
 body {
   font-family: 'Poppins', system-ui, sans-serif;
   margin: 0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1), transparent 40%),
-    linear-gradient(135deg, #4f7cff, #6aa0f7, #3776db);
   color: #333;
   text-align: center;
   min-height: 100vh;
+  background-color: #4f7cff; /* This keeps the blue default so it's never white */
 }
+
+#bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Puts it behind everything */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: none; /* Hidden until an image is uploaded */
+}
+
+
 
 
 .header {
@@ -34,31 +44,26 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-
 .header-row {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-
 .header img {
   width: 50px;
   height: 50px;
 }
 
-
 #loginBox, #content {
   display: none;
 }
-
 
 #mathPage {
   padding: 20px;
   max-width: 900px;
   margin: 0 auto 150px auto;
 }
-
 
 .mathBox {
   background: white;
@@ -69,7 +74,6 @@ body {
   margin-bottom: 20px;
 }
 
-
 .math-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -77,7 +81,6 @@ body {
   font-family: "Times New Roman", Times, serif;
   font-size: 1.1em;
 }
-
 
 #loginBox {
   position: fixed;
@@ -95,12 +98,14 @@ body {
   z-index: 100;
 }
 
-
-/* SEARCH FEATURE STYLES */
 .search-container {
     margin-top: 20px;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -114,7 +119,6 @@ body {
     box-sizing: border-box;
 }
 
-
 input {
   padding: 12px;
   border-radius: 6px;
@@ -123,7 +127,6 @@ input {
   font-size: 16px;
 }
 
-
 button {
   padding: 12px 24px;
   border-radius: 6px;
@@ -131,13 +134,12 @@ button {
   background: #ffb300;
   color: white;
   font-weight: bold;
+  text-align: center;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-
 button:hover { background: #e6a100; }
-
 
 .grid {
   display: flex;
@@ -147,19 +149,18 @@ button:hover { background: #e6a100; }
   padding: 40px;
 }
 
-
 .card {
   width: 180px;
   cursor: pointer;
   background: white;
   padding: 10px;
+  text-align: center;
   border-radius: 12px;
+
   transition: transform 0.2s;
 }
 
-
 .card:hover { transform: translateY(-5px); }
-
 
 .card img {
   width: 100%;
@@ -167,7 +168,6 @@ button:hover { background: #e6a100; }
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-
 
 .footer {
   width: 100%;
@@ -182,17 +182,14 @@ button:hover { background: #e6a100; }
   backdrop-filter: blur(5px);
 }
 
-
 #footerContainer, #footerContainer * {
   position: static !important;
 }
-
 
 #footerContainer {
   width: 100%;
   margin-top: 40px;
 }
-
 
 .copy-btn {
   margin-top: 12px;
@@ -205,33 +202,27 @@ button:hover { background: #e6a100; }
   transition: transform 0.15s, opacity 0.2s;
 }
 
-
 .copy-btn:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
-
 
 /* Individual colors */
 .discord {
   background: #5865F2;
 }
 
-
 .suggestions {
   background: #22c55e;
 }
-
 
 .tiktok {
   background: #400559;
 }
 
-
 .help {
   background: #db2525;
 }
-
 
 /* Settings Button */
 .settings-btn {
@@ -245,7 +236,6 @@ button:hover { background: #e6a100; }
   transition: transform 0.3s;
   z-index: 50;
 }
-
 
 .settings-btn:hover {
   transform: rotate(20deg);
@@ -266,7 +256,6 @@ button:hover { background: #e6a100; }
   justify-content: center;
 }
 
-
 .settings-container {
   background: white;
   padding: 40px;
@@ -276,7 +265,6 @@ button:hover { background: #e6a100; }
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   position: relative;
 }
-
 
 .settings-close-btn {
   position: absolute;
@@ -289,11 +277,9 @@ button:hover { background: #e6a100; }
   color: #333;
 }
 
-
 .settings-close-btn:hover {
   color: #ff6b6b;
 }
-
 
 .settings-title {
   text-align: center;
@@ -301,11 +287,9 @@ button:hover { background: #e6a100; }
   color: #333;
 }
 
-
 .settings-option {
   margin-bottom: 25px;
 }
-
 
 .settings-option label {
   display: block;
@@ -314,13 +298,11 @@ button:hover { background: #e6a100; }
   color: #333;
 }
 
-
 .color-picker {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-
 
 .color-option {
   width: 50px;
@@ -331,17 +313,14 @@ button:hover { background: #e6a100; }
   transition: all 0.3s;
 }
 
-
 .color-option:hover {
   transform: scale(1.1);
 }
-
 
 .color-option.active {
   border-color: #333;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-
 
 #popupsPage {
   display: none;
@@ -356,7 +335,6 @@ button:hover { background: #e6a100; }
   align-items: center;
 }
 
-
 .popupsContainer {
   background: white;
   padding: 30px;
@@ -365,6 +343,27 @@ button:hover { background: #e6a100; }
   max-width: 400px;
   text-align: center;
   position: relative;
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.tab {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab.active {
+  background: #ffb300;
+  color: white;
 }
 
 
@@ -385,12 +384,9 @@ button:hover { background: #e6a100; }
   justify-content: center;
 }
 
-
 .popup-close-btn:hover {
   background: #e63939;
 }
-
-
 
 
 .popup-btn {
@@ -406,18 +402,13 @@ button:hover { background: #e6a100; }
   cursor: pointer;
 }
 
-
 .popup-btn.alt {
   background: #4f7cff;
 }
 
 
 
-
-
-
 </style>
-
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GS1LX3RTMD"></script>
@@ -426,10 +417,8 @@ button:hover { background: #e6a100; }
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-
   gtag('config', 'G-GS1LX3RTMD');
 </script>
-
 
 <script>
 function trackGame(name) {
@@ -442,11 +431,10 @@ function trackGame(name) {
 }
 </script>
 
-
 </head>
 
-
 <body>
+<div id="bg-layer"></div>
 
 
 <div id="mainWrapper">
@@ -456,9 +444,7 @@ function trackGame(name) {
         <h1>BrightPath Learning v2</h1>
       </div>
 
-
     </div>
-
 
     <div id="mathPage">
       <div class="mathBox">
@@ -475,7 +461,6 @@ function trackGame(name) {
   </iframe>
 </div>
 
-
         <div class="math-grid">
   <div>
     <h4>Algebra</h4>
@@ -484,7 +469,6 @@ function trackGame(name) {
     <p>3. log₂(x(x−2)) = 3</p>
   </div>
 
-
   <div>
     <h4>Derivatives</h4>
     <p>1. d/dx [sin(x)eˣ] = eˣ(cos(x) + sin(x))</p>
@@ -492,14 +476,12 @@ function trackGame(name) {
     <p>3. lim (sin x / x) = 1</p>
   </div>
 
-
   <div>
     <h4>Linear Algebra</h4>
     <p>1. det = ad − bc</p>
     <p>2. A·B = |A||B|cosθ</p>
     <p>3. Solve Ax = B</p>
   </div>
-
 
   <div>
     <h4>Trig</h4>
@@ -511,7 +493,6 @@ function trackGame(name) {
       </div>
     </div>
 
-
     <div id="loginBox">
       <span style="font-weight: bold; margin-right: 10px;">Verification Required:</span>
       <input type="password" id="codeInput" placeholder="Enter student PIN">
@@ -519,50 +500,54 @@ function trackGame(name) {
     </div>
 </div>
 
-
 <div id="content">
   <div class="header">
       <img src="https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp">
       <h1>BrightPath Learning v2</h1>
 <button class="settings-btn" onclick="openSettings()" title="Settings">⚙️</button>
 
-
       <div class="search-container">
-          <input type="text" id="gameSearch" placeholder="Search your favorite lessons." onkeyup="filterGames()">
-<p class="search-text">If a tab doesn’t open, please disable block popups! Click the “Popup Help” button below if you need a tutorial.</p>
-<button class="copy-btn discord" data-link="https://discord.gg/2fKB7N3rsM" onclick="handleLinkButton(this)">
-  Discord
-</button>
+    <input type="text" id="gameSearch" placeholder="Search your favorite lessons." onkeyup="filterGames()">
+    
+    <h3 class="search-text" id="gameCountText">Loading games count</h3>
+    
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+        <button class="copy-btn discord" data-link="..." onclick="handleLinkButton(this)">Discord</button>
+        <button class="copy-btn tiktok" data-link="..." onclick="handleLinkButton(this)">Tiktok</button>
+        <button class="copy-btn suggestions" data-link="..." onclick="handleLinkButton(this)">Suggestions</button>
+        <button class="copy-btn help" data-link="..." onclick="handleLinkButton(this)">Popup Help</button>
+    </div>
+<div style="text-align: center; margin: 30px 0;">
+    <p style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">Share! (idk why its so small just zoom in or something</p>
+    <div id="qrcode" style="
+      display: inline-block;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    "></div>
+</div>
 
 
 
-
-<button class="copy-btn tiktok" data-link="https://www.tiktok.com/@brightpath254" onclick="handleLinkButton(this)">
-  Tiktok
-</button>
-
-
-<button class="copy-btn suggestions" data-link="https://docs.google.com/forms/d/e/1FAIpQLSeCou6P1QRWKZvSmsKo6aOb3639b5mgEwjmMysVeSylJDJfWw/viewform?usp=he        ader" onclick="handleLinkButton(this)">
-  Suggestions
-</button>
-
-
-<button class="copy-btn help" data-link="https://www.youtube.com/watch?v=TyN4uyMg-Is" onclick="handleLinkButton(this)">
-  Popup Help
-</button>
-
-
-
-
-
-
-      </div>
+</div>
 
 
   </div>
+<div class="tab-bar">
+  <button class="tab active" onclick="showTab('games')">Games</button>
+  <button class="tab" onclick="showTab('apps')">Apps</button>
+</div>
+
+  <div id="gamesContainer">
   <div class="grid" id="grid"></div>
 </div>
 
+<div id="appsContainer" style="display:none;">
+  <div class="grid" id="appsGrid"></div>
+</div>
+
+</div>
 
 <!-- Settings Page -->
 <div id="settingsPage">
@@ -580,11 +565,22 @@ function trackGame(name) {
         <div class="color-option" style="background: linear-gradient(135deg, #4facfe, #00f2fe);" onclick="changeBackground('linear-gradient(135deg, #4facfe, #00f2fe)')"></div>
         <div class="color-option" style="background: linear-gradient(135deg, #43e97b, #38f9d7);" onclick="changeBackground('linear-gradient(135deg, #43e97b, #38f9d7)')"></div>
         <div class="color-option" style="background: linear-gradient(135deg, #fa709a, #fee140);" onclick="changeBackground('linear-gradient(135deg, #fa709a, #fee140)')"></div>
+<div class="settings-option">
+  <label>Upload Custom Background:</label>
+  <input type="file" id="bgUpload" accept="image/*" style="width: 100%; margin-bottom: 10px;">
+  
+  <div style="display: flex; gap: 10px;">
+    <button onclick="handleFileUpload()" style="flex: 1;">Set Image</button>
+    <button onclick="clearCustomBg()" style="background: #ff4d4d; flex: 1;">Reset</button>
+  </div>
+  <p style="font-size: 11px; color: #666; margin-top: 5px;">Enjoy changing your backround idk</p>
+</div>
+
+
       </div>
     </div>
   </div>
 </div>
-
 
 <div id="popupsPage">
   <div class="popupsContainer">
@@ -593,11 +589,9 @@ function trackGame(name) {
     
     <p>Some devices block popups. You need them enabled for certain games.</p>
 
-
     <button class="popup-btn" onclick="window.open('https://drive.google.com/file/d/1Pc1_ypdFQsV7o2wXHkbNmkqq-ZniBSnJ/view?usp=sharing', '_blank')">
       Safari
     </button>
-
 
     <button class="popup-btn alt" onclick="window.open('https://drive.google.com/file/d/1sNE2dklzRUNQdkPaSlYh7wgPLxgCXRbT/view?usp=sharing', '_blank')">
       Chrome
@@ -607,25 +601,27 @@ function trackGame(name) {
 
 
 
-
-
-
 <script>
 function openPopup() {
 if(localStorage.getItem('popupBlock') != "true"){
   document.getElementById("popupsPage").style.display = "flex";
 };
 
-
   
 }
 
 
+function generateQRCode() {
+    const pageURL = window.location.href;
+    const qrCodeAPI = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=${encodeURIComponent(pageURL)}`;
+    document.getElementById("qrcode").innerHTML = `<img src="${qrCodeAPI}" alt="QR Code">`;
+}
 
+
+window.addEventListener('load', generateQRCode);
 
 function handleLinkButton(btn) {
   const url = btn.dataset.link;
-
 
   navigator.clipboard.writeText(url).then(() => {
     window.open(url, "_blank");
@@ -640,7 +636,6 @@ function handleLinkButton(btn) {
   });
 }
 
-
 async function loadGameLoader() {
   try {
     const res = await fetch("https://gist.githubusercontent.com/rainS-IM/fe66facb5be92f922fc32d51f55b0462/raw/e26c5274d61d5ccbf2cb00c8348d9e9ebd8b4da8/GameLoaderv2");
@@ -651,15 +646,27 @@ async function loadGameLoader() {
   }
 }
 
-
 loadGameLoader();
+
+function updateGameCount() {
+    const totalGames = games.length + blobGames.length;
+    const display = document.getElementById("gameCountText");
+    if (display) {
+        display.innerText = `Games: ${totalGames}`;
+    }
+}
 
 
 const ACCESS_CODE = "1234";
 const DEFAULT_IMAGE = "https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp";
 
 
-// Unified Game Data
+const apps = [
+  ["Soundboard", "https://iili.io/B60CkHg.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clsoundboard.html", true], 
+  ["Emulator", "https://iili.io/B60CvRa.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clemujs.html", true], 
+  ["Scratch Editor", "https://iili.io/B60COUF.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clscratchoptions.html .html", true], 
+];
+
 const blobGames = [
     ["UNDERTALE", "https://iili.io/BGiaORj.png", "https://gist.githubusercontent.com/rainS-IM/ba580fec2da9e5542ba8faa70eeda1f3/raw/19287be6e554f0d48ffb7ec33f0bd00897ea5199/Game1", true],
     ["Deltarune", "https://iili.io/BhaVscv.png", "https://gist.githubusercontent.com/rainS-IM/11ead6bf1f8eb7622da4556cc423fa4b/raw/b56081ef3d2555a6353c1cf833562eb77cdb0c9e/deltarune", true],
@@ -674,12 +681,10 @@ const blobGames = [
     ["Polytrack", "https://iili.io/BGi5xN2.png", "https://gist.githubusercontent.com/rainS-IM/aa1199e14378a02754bd5c1844009b6b/raw/a2f583a0d4172b5085898fcb851f112747a01c85/polyTrackAgaianBut", true],
     ["Drive Mad", "https://iili.io/BwRsQVe.jpg", "https://gist.githubusercontent.com/rainS-IM/6ca810e44a950934e95d4e9973cf1a1d/raw/3d1d3aef5ca3f6e061d6c9ff292357deec303221/driveMad", true],
 
-
     ["Retro Bowl", "https://iili.io/BGiJEru.png", "https://gist.githubusercontent.com/rainS-IM/8ad6375db8eedfaea70d13c589845883/raw/e4204deac395cee6c1aebbf2f46660ecb4529182/Retrobowl2", true],
 ["Run 3", "https://iili.io/BNu35Jf.jpg", "https://gist.githubusercontent.com/rainS-IM/1b603f2a44eb9c774e4d29d1c8943a7e/raw/417a8fef29b08c3bc50e6bf30f42f6c14471a5c3/Run3yes", true],
 ["Backrooms", "https://iili.io/BkUlOYb.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbackrooms.html", true],
 ["Plants vs Zombies", "https://iili.io/BkUvZ0b.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/PVZM.html", true],
-
 
 ["Among Us", "https://iili.io/BkUlevj.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clamongus.html", true],
 ["Aqua Park io", "https://iili.io/BkUlN3u.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/claquaparkio.html", true],
@@ -687,11 +692,9 @@ const blobGames = [
 ["Bob The Robber 2", "https://iili.io/BkUl4G1.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbobtherobber2.html", true],
 ["Boxing Random", "https://iili.io/BkUli3g.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clboxingrandom.html", true],
 
-
 ["Cut The Rope", "https://iili.io/BkUlsaa.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clcuttherope.html", true],
 ["Doodle Jump", "https://iili.io/BkUltuR.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cldoodlejumpgoober.html", true],
 ["Doomz.io", "https://iili.io/BkUlQyv.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cldoomzio.html", true],
-
 
 ["Neon Blaster", "https://iili.io/BkUlDjp.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clneonblaster.html", true],
 ["OVO", "https://iili.io/BkUlpnI.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clovofixed.html", true],
@@ -714,7 +717,6 @@ const blobGames = [
 ["Celeste", "https://iili.io/BU23hdB.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/celeste.html", true],
 ["Spiral Roll", "https://iili.io/BUiAAw7.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/spiralroll.html", true],
 
-
 ["Stick Slasher", "https://iili.io/BU2DSkJ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/stickslasher.html"],
 ["Stick With It", "https://iili.io/BUiREfs.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clstickwithit.html"],
 ["Bloons TD", "https://iili.io/BUi5ABe.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbloonsTD1.html "],
@@ -736,13 +738,9 @@ const blobGames = [
 // ["Hollow Knight", "https://iili.io/Bgkmcl4.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Hollow-Knight.html ", true],
 // ["People Playground", "https://iili.io/Bg8wmaR.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/people%20playground.html ", true],
 
-
 // ["People Playground", "https://iili.io/Bg8wmaR.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/people%20playground.html ", true],
 
-
 ["Infinite Craft", "https://iili.io/BgrLCOB.webp", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clinfinitecraft.html ", true],
-
-
 
 
 ["Push Your Luck", "https://iili.io/BrTXMIj.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clpushyourluck.html ", true],
@@ -754,25 +752,58 @@ const blobGames = [
 ["99 Balls", "https://iili.io/BrTwY1p.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cl99balls.html ", true],
 ["Tiny Fishing", "https://iili.io/BrTwLYP.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cltinyfishing.html ", true],
 ["Johnny Trigger", "https://iili.io/BrTNBZG.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cljohnnytrigger.html ", true],
+//["Buckshot Roulette", "https://iili.io/BrRjKvI.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Buckshot%20Roulette.html ", true],
+["Little Alchemy 2", "https://iili.io/B46QZlI.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cllittlealchemy2.html", true],
+
+//["omori", "https://iili.io/BriDhml.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/omori.html"],
+["Airline Tycoon Idle", "https://iili.io/B4CLm3N.webp", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clairlinetycoonidle.html", true],
+["Ailen Sky Invasion", "https://iili.io/B46r1mQ.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clalienskyinvasion.html", true],
+["Ascent", "https://iili.io/B46r0kx.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clascent.html", true],
+
+["Bad Piggies", "https://iili.io/B4CQpix.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbadpiggieslatest.html", true],
+["Silk", "https://iili.io/BrsgzoG.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/silk.html", true],
+["VEX", "https://iili.io/BrLfK0v.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX.html", true],
+["VEX 2", "https://iili.io/BrLAr5g.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX%202.html", true],
+["VEX 3", "https://iili.io/BrLEGZF.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX%203.html", true],
+["Dad n Me", "https://iili.io/B46rl7j.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Dad%20n%20Me.html", true],
+
+["Final Earth 2", "https://example.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Final%20Earth%202.html", true],
+["Ragdoll Drop", "https://example.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Rag%20Doll%20Drop.html", true],
+["Ragdoll Hit", "https://example.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Rag%20Doll%20Hit.html", true],
+
+["Capybara Clicker", "https://iili.io/B46rGIV.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clcapybaraclicker.html", true],
+["Class of ‘09", "https://example.com", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clclassof09.html", true],
+["Crossy Road", "https://iili.io/B46rMhB.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clcrossyroad.html", true],
+
+["Funny Battle", "https://iili.io/B46rVLP.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clfunnybattle.html", true],
+["Gold Miner", "https://iili.io/B46rXB1.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clgoldminer.html", true],
+
+["Trees Hate You", "https://iili.io/B46rhEF.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cltreeshateyou.html", true],
+["Monkey Mart", "https://iili.io/B6YnPe4.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clmonkeymart.html", true],
+["Climb for Brainrots", "https://iili.io/B6Yn67f.webp", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clclimbforbrainrots.html", true],
+["Only Up", "https://iili.io/B6Yniml.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clonlyup.html"],
+["Huggy Wuggy Pixel", "https://iili.io/B6Yn4dG.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clhuggywiggypixel.html", true],
+["Ultimate Paperclips", "https://iili.io/B6lnScX.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/upaperclips.html"],
+
+["Basketball Legends", "https://iili.io/B6ljHVR.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbasketballlegends.html"],
+["Defend Your Nuts", "https://iili.io/B6lw2Xj.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/defendnuts.html"],
+["Space Is Key", "https://iili.io/B6ljeWv.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clspaceiskey.html "],
 
 
 ];
 
-
 const games = [
 
-
     ["Bitlife Simulator", "https://iili.io/BGPtBkP.png", "https://gist.githubusercontent.com/rainS-IM/797acde6219245729def44783c72bf6e/raw/2e768b8d6f9eb64bf3c49f7299af9747842e66ef/game4"],
-
 
 ["Minecraft (Computer Only)", "https://iili.io/BNuvoSR.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clmine.html ", true],
 ["Minecraft Classic", "https://iili.io/BgrguyX.webp", "https://gist.githubusercontent.com/rainS-IM/fa3f02b5791413203c407194d3f70f76/raw/76be7fb4f72361ded0668f353140c1597c0a1631/Minecraft", true],
 
-
     ["Getaway Shootout", "https://iili.io/BGi3pyJ.png", "https://gist.githubusercontent.com/rainS-IM/e28334b9dd0e17e7fdc6c3ba156aa1b5/raw/13053173cdf220803d5e4ff709309d2554cfc457/game8"],
     ["Zombies Coming", "https://iili.io/BGiq6S1.png", "https://gist.githubusercontent.com/rainS-IM/619631cbdd1ef62198d33d8ecc618cec/raw/bd41f4a555044008da32eefee74d353c121cdb4a/game9"],
     ["Slow Roads", "https://iili.io/BGiov5P.png", "https://gist.githubusercontent.com/rainS-IM/69822305792f840a8790b5e528e9b469/raw/89df91de02753e43704339cc1e75f959931dd5ef/game6"],
-    ["Escape Road", "https://iili.io/BGiTgvp.png", "https://gist.githubusercontent.com/rainS-IM/3742ba7f5aa1f6f2a18411d1dbb4b66f/raw/4ef73bdeddee074dedee6ccc3c4750996dd01ef3/game5", true],
+  ["Escape Road", "https://iili.io/BGiTgvp.png", "https://gist.githubusercontent.com/rainS-IM/3742ba7f5aa1f6f2a18411d1dbb4b66f/raw/4ef73bdeddee074dedee6ccc3c4750996dd01ef3/game5"],
+
     
     ["Paper.io", "https://iili.io/BGiEnZx.png", "https://gist.githubusercontent.com/rainS-IM/c3580d09c190cc58e6d80922aa993eae/raw/43912568466976d974919460c84d78a41b47980e/game11"],
     ["Pixel Shooter", "https://iili.io/BGiMwB4.png", "https://gist.githubusercontent.com/rainS-IM/2433594caf1c5c241ed21dbb36768e4a/raw/01ba2e4b9eeb1336e5436e4fcb6fd2c1562e6035/game12"],
@@ -797,7 +828,6 @@ const games = [
     ["Bad Time Simulator", "https://iili.io/BwRp5jR.jpg", "https://gist.githubusercontent.com/rainS-IM/0e16f309056ebc3a01d784c412288a14/raw/9ea56194d85ab654030c972eb5c85b89360ad3d5/batTimeSim"],
 ];
 
-
 function checkCode(){
   const input = document.getElementById("codeInput").value;
   if(input === ACCESS_CODE){
@@ -805,9 +835,10 @@ function checkCode(){
     document.getElementById("content").style.display = "block";
     localStorage.setItem('enterWebsite', 'true');
     openPopup()
+    updateGameCount();
     renderGames(""); // Initial render
   } else {
-  if(input === "6741"){
+  if(input === "6741jhgffghjhgfddf"){
     alert("Code changed! Please see owner")
   } else {
 alert("Wrong Code")
@@ -815,21 +846,18 @@ alert("Wrong Code")
   }
 }
 
-
 if(localStorage.getItem('enterWebsite') == "true"){
-
 
     document.getElementById("mainWrapper").style.display = "none";
     document.getElementById("content").style.display = "block";
     openPopup()
+    updateGameCount();
     renderGames(""); // Initial render
 };
-
 
 function openSettings() {
   document.getElementById("settingsPage").style.display = "flex";
 }
-
 
 function closePopup() {
   document.getElementById("popupsPage").style.display = "none";
@@ -837,10 +865,54 @@ function closePopup() {
 }
 
 
+  
+function renderApps(filterText = "") {
+    const grid = document.getElementById("appsGrid");
+    grid.innerHTML = "";
+    const term = filterText.toLowerCase();
+
+    const allApps = apps;
+
+    allApps.forEach(g => {
+        if (g[0].toLowerCase().includes(term)) {
+            const card = document.createElement("div");
+            card.className = "card";
+
+            const imgSrc = (g[1] === "none" || !g[1]) ? DEFAULT_IMAGE : g[1];
+
+            card.innerHTML = `<img src="${imgSrc}"><p>${g[0]}</p>`;
+
+            card.onclick = () => {
+                if (g[3] === true) openFromURLBlob(g[2]);
+                else openFromURL(g[2], g[0]);
+            };
+
+            grid.appendChild(card);
+        }
+    });
+}
 
 
 
 
+
+function showTab(tab) {
+  const games = document.getElementById("gamesContainer");
+  const apps = document.getElementById("appsContainer");
+
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+
+  if (tab === "games") {
+    games.style.display = "block";
+    apps.style.display = "none";
+    document.querySelectorAll(".tab")[0].classList.add("active");
+  } else {
+    games.style.display = "none";
+    apps.style.display = "block";
+    document.querySelectorAll(".tab")[1].classList.add("active");
+    renderApps();
+  }
+}
 
 
 
@@ -849,30 +921,107 @@ function closeSettings() {
   document.getElementById("settingsPage").style.display = "none";
 }
 
-
 function changeBackground(gradient) {
+  localStorage.removeItem('customBgImage'); 
   document.body.style.background = gradient;
   localStorage.setItem('bgColor', gradient);
   
-  // Update active state
   document.querySelectorAll('.color-option').forEach(el => el.classList.remove('active'));
-  event.target.classList.add('active');
+  if(event && event.target) event.target.classList.add('active');
+}
+
+function saveCustomBg() {
+  const url = document.getElementById("bgUrlInput").value;
+  if (url) {
+    applyBackgroundImage(url);
+    localStorage.setItem('customBgImage', url);
+    localStorage.removeItem('bgColor'); // Clear gradient preference
+  }
 }
 
 
-// Load saved background on page load
+
+
+function handleFileUpload() {
+  const file = document.getElementById('bgUpload').files[0];
+  const reader = new FileReader();
+
+  if (file) {
+    reader.onload = function(e) {
+      const base64Image = e.target.result;
+      applyBackgroundImage(base64Image);
+      // Save the image string to memory
+      localStorage.setItem('customBgImage', base64Image);
+      localStorage.removeItem('bgColor'); 
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function applyBackgroundImage(imgData) {
+  const bgLayer = document.getElementById('bg-layer');
+  
+  if (bgLayer) {
+    bgLayer.style.backgroundImage = `url('${imgData}')`;
+    bgLayer.style.display = "block"; // Show the layer
+    
+    // Reset body background so it doesn't conflict
+    document.body.style.background = "transparent";
+    document.body.style.backgroundColor = "#4f7cff"; 
+  }
+}
+
+function handleFileUpload() {
+  const file = document.getElementById('bgUpload').files[0];
+  const reader = new FileReader();
+
+  if (file) {
+    reader.onload = function(e) {
+      const base64Image = e.target.result;
+      localStorage.setItem('customBgImage', base64Image);
+      localStorage.removeItem('bgColor'); 
+      applyBackgroundImage(base64Image);
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function clearCustomBg() {
+  localStorage.removeItem('customBgImage');
+  const bgLayer = document.getElementById('bg-layer');
+  if (bgLayer) bgLayer.style.display = "none";
+  
+  // Restore the original blue gradient
+  changeBackground('linear-gradient(135deg, #4f7cff, #6aa0f7, #3776db)');
+}
+
+// Ensure the loader checks for the layer
 window.addEventListener('load', () => {
-  const saved = localStorage.getItem('bgColor');
-  if (saved) {
-    document.body.style.background = saved;
+  const savedImg = localStorage.getItem('customBgImage');
+  const savedGrad = localStorage.getItem('bgColor');
+  
+  if (savedImg) {
+    applyBackgroundImage(savedImg);
+  } else if (savedGrad) {
+    document.body.style.background = savedGrad;
   }
 });
 
 
 
+window.addEventListener('load', () => {
+  const savedImg = localStorage.getItem('customBgImage');
+  const savedGrad = localStorage.getItem('bgColor');
+  
+  if (savedImg) {
+    applyBackgroundImage(savedImg);
+  } else if (savedGrad) {
+    document.body.style.background = savedGrad;
+  }
+});
+
 
 async function openFromURLBlob(url){
-
 
   try {
     const res = await fetch(url);
@@ -882,7 +1031,6 @@ async function openFromURLBlob(url){
     window.open(blobURL, "_blank");
   } catch (e) { alert("Failed to load module"); }
 }
-
 
 async function openFromURL(url, gameName){
   trackGame(gameName);
@@ -899,12 +1047,10 @@ async function openFromURL(url, gameName){
   } catch (e) { newTab.document.body.innerHTML = "<h1>Module load failed.</h1>"; }
 }
 
-
 function renderGames(filterText) {
     const grid = document.getElementById("grid");
     grid.innerHTML = "";
     const term = filterText.toLowerCase();
-
 
     // Combine and Filter
     const allGames = [...games, ...blobGames];
@@ -925,7 +1071,6 @@ function renderGames(filterText) {
     });
 }
 
-
 function filterGames() {
     const val = document.getElementById("gameSearch").value;
     renderGames(val);
@@ -934,15 +1079,19 @@ function filterGames() {
 
 
 
-
-
-
-
 </script>
-
-
 
 
 <div id="footerContainer"></div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
