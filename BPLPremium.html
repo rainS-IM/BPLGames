@@ -21,6 +21,42 @@ body {
   background-color: #4f7cff; /* This keeps the blue default so it's never white */
 }
 
+.mathBox h2 {
+  margin-top: 0;
+}
+
+.mathBox p {
+  line-height: 1.6;
+}
+
+.login-inner {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  background: #ffffff; 
+  padding: 18px 22px;
+
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.login-inner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.15);
+}
+
+.mathBox {
+  transition: transform 0.2s;
+}
+
+.mathBox:hover {
+  transform: translateY(-3px);
+}
+
+
 #bg-layer {
   position: fixed;
   top: 0;
@@ -85,19 +121,11 @@ body {
 }
 
 #loginBox {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  background: #f8f9fa;
-  padding: 20px;
-  border-top: 3px solid #ffb300;
-  box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
-  display: flex; 
+  display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 10px;
-  z-index: 100;
+  padding: 40px 0 60px 0;
+  background: transparent; /* keep page background visible */
 }
 
 .search-container {
@@ -209,7 +237,6 @@ button:hover { background: #e6a100; }
   opacity: 0.9;
 }
 
-/* Individual colors */
 .discord {
   background: #5865F2;
 }
@@ -324,6 +351,35 @@ button:hover { background: #e6a100; }
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Force category sections to stack vertically */
+#grid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20px;
+}
+
+/* Make each section full width */
+.category-section {
+  width: 100%;
+}
+
+/* Keep game cards in a grid INSIDE each category */
+.category-content.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Subtle white text outline effect */
+body, h1, h2, h3, h4, h5, h6, span, li, a {
+  text-shadow:
+    0 0 6px rgba(225,225,225,0.9),
+    0 0 6px rgba(225,225,225,0.9);
+}
+
+
 #popupsPage {
   display: none;
   position: fixed;
@@ -408,6 +464,27 @@ button:hover { background: #e6a100; }
   background: #4f7cff;
 }
 
+.category-section {
+  margin-bottom: 30px;
+}
+
+.category-header {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  margin: 10px 40px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #ffb300;
+}
+
+.category-content {
+  display: block;
+}
+
+.category-content.collapsed {
+  display: none;
+}
 
 
 </style>
@@ -443,64 +520,142 @@ function trackGame(name) {
     <div class="header">
       <div class="header-row">
         <img src="https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp">
-        <h1>BrightPath Learning</h1>
+        <h1>BrightPath Learning v2</h1>
       </div>
 
     </div>
 
     <div id="mathPage">
-      <div class="mathBox">
-        <h2 style="text-align: center; color: #ffb300;">Unit 4: Advanced STEM Curriculum</h2>
-        <hr>
-<div style="margin: 20px 0; text-align: center;">
-  <iframe width="100%" height="315"
-    src="https://www.youtube.com/embed/WsQQvHm4lSw?si=2DPWbcmi3wX0C-_R"
-    title="Math Learning Video"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-    style="border-radius: 12px;">
-  </iframe>
-</div>
 
-        <div class="math-grid">
-  <div>
-    <h4>Algebra</h4>
-    <p>1. Solve: 2x² + 5x − 3 = 0</p>
-    <p>2. Simplify: (x + 3)(x − 3) ÷ (x² − 9)</p>
-    <p>3. log₂(x(x−2)) = 3</p>
+  
+  <div class="mathBox" style="text-align:center;">
+    <h1 style="color:#ffb300;">BrightPath Learning</h1>
+    <p style="font-size:18px;">A smarter way to learn, practice, and explore.</p>
+
+    <div style="margin-top:20px;">
+      <button onclick="document.getElementById('content').scrollIntoView({behavior:'smooth'})">
+        Enter Learning Hub
+      </button>
+    </div>
   </div>
 
-  <div>
-    <h4>Derivatives</h4>
-    <p>1. d/dx [sin(x)eˣ] = eˣ(cos(x) + sin(x))</p>
-    <p>2. ∫(3x² + 2x + 1)dx = x³ + x² + x + C</p>
-    <p>3. lim (sin x / x) = 1</p>
+  
+  <div class="mathBox">
+    <h2 style="color:#ffb300;">Our Goal</h2>
+    <p>
+      At BrightPath Learning, our goal is to make education more engaging, accessible, 
+      and effective for every student. We combine structured learning with interactive 
+      tools to help users understand concepts instead of just memorizing them.
+    </p>
+    <p>
+      Whether you're reviewing algebra, exploring calculus, or just looking for a 
+      fun way to practice, this platform is designed to keep learning interesting.
+    </p>
   </div>
 
-  <div>
-    <h4>Linear Algebra</h4>
-    <p>1. det = ad − bc</p>
-    <p>2. A·B = |A||B|cosθ</p>
-    <p>3. Solve Ax = B</p>
+ 
+  <div class="math-grid">
+    <div class="mathBox">
+      <h3>📘 Structured Learning</h3>
+      <p>Organized topics from basic to advanced concepts.</p>
+    </div>
+
+    <div class="mathBox">
+      <h3>🎮 Interactive Practice</h3>
+      <p>Learn through games and real-time interaction.</p>
+    </div>
+
+    <div class="mathBox">
+      <h3>⚡ Fast Access</h3>
+      <p>No complicated setup—everything is one click away.</p>
+    </div>
+
+    <div class="mathBox">
+      <h3>🎯 Skill Focused</h3>
+      <p>Focus on understanding, not memorization.</p>
+    </div>
   </div>
 
-  <div>
-    <h4>Trig</h4>
-    <p>1. sin²θ + cos²θ = 1</p>
-    <p>2. c² = a² + b² − 2ab cos(C)</p>
-    <p>3. 270° = 3π/2</p>
+  
+  <div class="mathBox">
+    <h2 style="text-align:center; color:#ffb300;">Featured Lesson</h2>
+    <iframe width="100%" height="315"
+      src="https://www.youtube.com/embed/WsQQvHm4lSw"
+      style="border-radius:12px;" allowfullscreen>
+    </iframe>
   </div>
-</div>
+
+    <div class="mathBox">
+    <h2 style="color:#ffb300;">Subjects Covered</h2>
+    <div class="math-grid">
+
+      <div>
+        <h4>Algebra</h4>
+        <p>Equations, factoring, logs</p>
       </div>
+
+      <div>
+        <h4>Calculus</h4>
+        <p>Derivatives, integrals, limits</p>
+      </div>
+
+      <div>
+        <h4>Linear Algebra</h4>
+        <p>Matrices, vectors, systems</p>
+      </div>
+
+      <div>
+        <h4>Trigonometry</h4>
+        <p>Identities, angles, functions</p>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="mathBox">
+    <h2 style="color:#ffb300;">How It Works</h2>
+    <ol style="line-height:1.8;">
+      <li>The platform isn't out yet! but…</li>
+      <li>Browse lessons, apps, or games</li>
+      <li>Practice concepts interactively</li>
+      <li>Return anytime to continue learning</li>
+    </ol>
+  </div>
+
+  
+  <div class="mathBox">
+    <h2 style="color:#ffb300;">Why This Platform Exists</h2>
+    <p>
+      Traditional learning can feel repetitive and disconnected. BrightPath Learning 
+      was created to combine education with interactivity, giving students a place 
+      where they can both learn and explore in a more natural way.
+    </p>
+  </div>
+
+  
+  <div class="mathBox" style="text-align:center;">
+    <h2 style="color:#ffb300;">Ready to Start?</h2>
+    <p>We haven’t finished with our site yet.</p>
+  </div>
+    <div id="loginBox">
+  <div class="login-inner">
+    <div class="login-text">
+      <strong>Enter a number</strong>
+      <span>Enter your favorite number for our database</span>
     </div>
 
-    <div id="loginBox">
-      <span style="font-weight: bold; margin-right: 10px;">Verification Required:</span>
-      <input type="password" id="codeInput" placeholder="Enter student PIN">
-      <button onclick="checkCode()">Verify Identity</button>
-    </div>
+    <input type="password" id="codeInput" placeholder="Student PIN">
+    <button onclick="checkCode()">Enter</button>
+  </div>
 </div>
+</div>
+
+</div>
+
+
+
+  
 
 <div id="content">
   <div class="header">
@@ -517,9 +672,9 @@ function trackGame(name) {
         <button class="copy-btn discord" data-link="https://discord.gg/KGTZrhWD" onclick="handleLinkButton(this)">Discord</button>
         <button class="copy-btn tiktok" data-link="https://www.tiktok.com/@brightpath254" onclick="handleLinkButton(this)">Tiktok</button>
         <button class="copy-btn suggestions" data-link="https://docs.google.com/forms/d/e/1FAIpQLSeCou6P1QRWKZvSmsKo6aOb3639b5mgEwjmMysVeSylJDJfWw/viewform?usp=header" onclick="handleLinkButton(this)">Suggestions</button>
-        <button class="copy-btn help" data-link="https://drive.google.com/file/d/1Pc1_ypdFQsV7o2wXHkbNmkqq-ZniBSnJ/view?usp=drive_link" onclick="handleLinkButton(this)">Popup Help</button>
+        
 <button class="copy-btn" style="background:#000;" onclick="copyBookmarklet(this)">
-  BPL In Bookmarks (Put copied text into a bookmark)
+  BPL In Bookmarks
 </button>
 
 
@@ -541,14 +696,13 @@ function trackGame(name) {
 
 
   </div>
-<div class="tab-bar" id="categoryBar">
-  <button class="tab active" onclick="showCategory('All', this)">All</button>
-</div>
+
 
 <div class="tab-bar">
 
   <button class="tab active" onclick="showTab('games')">Games</button>
   <button class="tab" onclick="showTab('apps')">Apps</button>
+  <button class="tab" onclick="showTab('movies')">Movies</button>
 </div>
 
   <div id="gamesContainer">
@@ -559,9 +713,13 @@ function trackGame(name) {
   <div class="grid" id="appsGrid"></div>
 </div>
 
+<div id="moviesContainer" style="display:none;">
+  <div class="grid" id="moviesGrid"><h1>Coming Soon!</h1></div>
 </div>
 
-<!-- Settings Page -->
+</div>
+
+
 <div id="settingsPage">
   <div class="settings-container">
     <button class="settings-close-btn" onclick="closeSettings()">✕</button>
@@ -585,7 +743,13 @@ function trackGame(name) {
     <button onclick="handleFileUpload()" style="flex: 1;">Set Image</button>
     <button onclick="clearCustomBg()" style="background: #ff4d4d; flex: 1;">Reset</button>
   </div>
-  <p style="font-size: 11px; color: #666; margin-top: 5px;">Enjoy changing your backround idk</p>
+  <p style="font-size: 11px; color: #666; margin-top: 5px;">Enjoy changing your background idk</p>
+<div class="settings-option" style="text-align:center; margin-top:30px;">
+  <button onclick="logout()" style="background:#ff4d4d; width:100%;">
+    Log Out
+  </button>
+</div>
+
 </div>
 
 
@@ -599,28 +763,85 @@ function trackGame(name) {
     <button class="popup-close-btn" onclick="closePopup()">✕</button>
     <h2 class="popup-title">Important!</h2>
     
-    <p>Some devices block popups. You need them enabled for certain games.</p>
+    <p>Thanks for using BrightPath Learning! We are still working on updates to continue making the website way better. We would appreciate it if you joined our Discord or followed us on TikTok. </p>
 
-    <button class="popup-btn" onclick="window.open('https://drive.google.com/file/d/1Pc1_ypdFQsV7o2wXHkbNmkqq-ZniBSnJ/view?usp=sharing', '_blank')">
-      Safari
+    <button class="popup-btn" onclick="window.open('https://discord.gg/KGTZrhWD', '_blank')">
+      Discord
     </button>
 
-    <button class="popup-btn alt" onclick="window.open('https://drive.google.com/file/d/1sNE2dklzRUNQdkPaSlYh7wgPLxgCXRbT/view?usp=sharing', '_blank')">
-      Chrome
+    <button class="popup-btn alt" onclick="window.open('https://www.tiktok.com/@brightpath254', '_blank')">
+      TikTok
     </button>
   </div>
 </div>
 
+<div id="gamePreviewOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:1000; flex-direction:column; align-items:center; justify-content:center;">
+    <div style="width:80%; height:80%; background:#000; position:relative; border-radius:10px; overflow:hidden; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+        <button onclick="closeGamePreview()" style="position:absolute; top:10px; right:10px; z-index:1001; background:#ff4444; border-radius:50%; width:30px; height:30px; border:none; color:white; cursor:pointer;">X</button>
+        <iframe id="previewFrame" style="width:100%; height:100%; border:none;"></iframe>
+    </div>
+    <div style="margin-top:20px; display:flex; gap:15px;">
+        <button id="fullscreenBtn" onclick="handleFullscreenClick()" style="background:#22c55e; padding:12px 25px; color:white; border:none; border-radius:5px; cursor:pointer;">
+    Go Fullscreen (New Tab)
+</button>
+
+    </div>
+</div>
 
 
 <script>
 function openPopup() {
-if(localStorage.getItem('popupBlock') != "true"){
+if(localStorage.getItem('popupStart') != "true"){
   document.getElementById("popupsPage").style.display = "flex";
 };
 
   
 }
+
+
+let currentActiveGame = null;
+
+function openGamePreview(url, title, isBlob) {
+    const overlay = document.getElementById('gamePreviewOverlay');
+    const frame = document.getElementById('previewFrame');
+    
+    
+    currentActiveGame = { url, title, isBlob };
+    overlay.style.display = 'flex';
+
+    if (isBlob) {
+        fetch(url).then(res => res.text()).then(code => {
+            frame.srcdoc = code; 
+        }).catch(err => {
+            frame.srcdoc = "<h1>Error loading game code</h1>";
+        });
+    } else {
+        const frameHTML = `
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <title>${title}</title>
+                    <style>
+                        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
+                        iframe { width: 100%; height: 100%; border: none; }
+                    </style>
+                </head>
+                <body>
+                    <iframe src="${url}" allow="autoplay; fullscreen; keyboard"></iframe>
+                </body>
+            </html>
+        `;
+        frame.srcdoc = frameHTML;
+    }
+}
+
+
+
+function closeGamePreview() {
+    const overlay = document.getElementById('gamePreviewOverlay');
+    const frame = document.getElementById('previewFrame');
+    overlay.style.display = 'none';
+    frame.src = ""; }
 
 
 function generateQRCode() {
@@ -637,7 +858,15 @@ function handleLinkButton(btn) {
   window.open(url, "_blank");
 }
 
+function handleFullscreenClick() {
+    if (!currentActiveGame) return;
 
+    if (currentActiveGame.isBlob) {
+        openFromURLBlob(currentActiveGame.url);
+    } else {
+        openFromURL(currentActiveGame.url, currentActiveGame.title);
+    }
+}
 
 async function loadGameLoader() {
   try {
@@ -663,11 +892,19 @@ function updateGameCount() {
 const ACCESS_CODE = "1234";
 const DEFAULT_IMAGE = "https://res.cloudinary.com/dfkbpbafl/image/upload/v1775861345/lightbulb_m23tj9.webp";
 let currentCategory = "All";
+let openedGame = false;
+
+const movies = [
+["Bee Movie", "thumbnail", "https://drive.google.com/file/d/1AiuhAubyrKVmqpu3OfM1sonhRJrzw5v6/view"], 
+
+];
 
 const apps = [
   ["Soundboard", "https://iili.io/B60CkHg.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clsoundboard.html", true], 
   ["Emulator", "https://iili.io/B60CvRa.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clemujs.html", true], 
   ["Scratch Editor", "https://iili.io/B60COUF.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clscratchoptions.html", true], 
+  ["Gust Browser", "https://iili.io/BiX8Uib.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/gust.html", true], 
+  ["Blooket Hacks", "https://iili.io/BLVRQhF.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/copyThing.html", true], 
 ];
 
 const blobGames = [
@@ -709,6 +946,7 @@ const blobGames = [
 ["Uno", "https://iili.io/BkU0RAx.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cluno.html", true],
 ["Volley Random", "https://iili.io/BkU0lP1.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clvolleyrandom.html", true, "Sports"],
 ["Granny", "https://iili.io/BkU01KF.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/granny.html", true, "Horror"],
+["Granny 2", "https://iili.io/BkU01KF.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Granny2.html", true, "Horror"],
 ["Stickman Hook", "https://iili.io/BU2JhJt.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/stickmanhook.html", true, "Strategy"],
 ["Geometry Dash (Scratch)", "https://iili.io/BU2JZLx.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/geometrydash.html", true, "Strategy"],
 ["Stack", "https://iili.io/BU2dTIs.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/stack.html", true, "Strategy"],
@@ -765,20 +1003,20 @@ const blobGames = [
 
 ["Bad Piggies", "https://iili.io/B4CQpix.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbadpiggieslatest.html", true],
 ["Silk", "https://iili.io/BrsgzoG.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/silk.html", true, "Creative"],
-["VEX", "https://iili.io/BrLfK0v.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX.html", true],
-["VEX 2", "https://iili.io/BrLAr5g.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX%202.html", true],
-["VEX 3", "https://iili.io/BrLEGZF.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX%203.html", true],
+["VEX", "https://iili.io/BrLfK0v.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX.html", true, "Strategy"],
+["VEX 2", "https://iili.io/BrLAr5g.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX%202.html", true, "Strategy"],
+["VEX 3", "https://iili.io/BrLEGZF.png", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/VEX%203.html", true, "Strategy"],
 ["Dad n Me", "https://iili.io/B46rl7j.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Dad%20n%20Me.html", true],
 
-["Final Earth 2", "https://example.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Final%20Earth%202.html", true],
-["Ragdoll Drop", "https://example.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Rag%20Doll%20Drop.html", true],
-["Ragdoll Hit", "https://example.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Rag%20Doll%20Hit.html", true],
+["Final Earth 2", "https://iili.io/BiLg1iN.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Final%20Earth%202.html", true],
+//["Ragdoll Drop", "https://example.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Rag%20Doll%20Drop.html", true],
+//["Ragdoll Hit", "https://example.jpg", "https://cdn.jsdelivr.net/gh/skullking254/BLPGames/Rag%20Doll%20Hit.html", true],
 
 ["Capybara Clicker", "https://iili.io/B46rGIV.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clcapybaraclicker.html", true, "Simulator"],
-["Class of ‘09", "https://example.com", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clclassof09.html", true],
+["Class of ‘09", "https://example.com", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Class09.html", true],
 ["Crossy Road", "https://iili.io/B46rMhB.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clcrossyroad.html", true, "Strategy"],
 
-["Funny Battle", "https://iili.io/B46rVLP.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clfunnybattle.html", true],
+["Funny Battle", "https://iili.io/B46rVLP.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clfunnybattle.html", true, "Action"],
 ["Gold Miner", "https://iili.io/B46rXB1.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clgoldminer.html", true, "Simulator"],
 
 ["Trees Hate You", "https://iili.io/B46rhEF.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cltreeshateyou.html", true, "Strategy"],
@@ -791,6 +1029,87 @@ const blobGames = [
 ["Basketball Legends", "https://iili.io/B6ljHVR.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbasketballlegends.html", false, "Sports"],
 ["Defend Your Nuts", "https://iili.io/B6lw2Xj.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/defendnuts.html", false, "Strategy"],
 ["Space Is Key", "https://iili.io/B6ljeWv.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clspaceiskey.html ", false, "Strategy"],
+["Age of War", "https://iili.io/BiL6Pbs.webp", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/ageofwar.html ", false, "Action"],
+["Temple Run 2", "https://iili.io/BiLPWB4.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cltemplerun2.html ", true],
+["Parking Fury", "https://iili.io/BiLin6l.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clparkingfury.html ", true, "Cars"],
+["Tung Tung Sahur Obby", "https://iili.io/BiLipDu.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cltungtungtungsahurobby.html", true],
+["Unfair Undyne", "https://iili.io/BiLsUgV.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clunfairundyne.html", true, "Action"],
+["Karate Bros", "https://iili.io/BiLLMQa.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clkaratebros.html", true, "Sports"],
+["Bacon May Die", "https://iili.io/BiLLLy7.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clbaconmaydie.html", true],
+["George and The Printer", "https://iili.io/BsvR5t1.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clgeorgeandtheprinter.html", true],
+["Elastic Face", "https://iili.io/BsvRAAB.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clelasticface.html", true],
+["Car Eats Car 2", "https://iili.io/BsvRYoF.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clcareatscar2deluxe.html", true, "Cars"],
+
+["Friday Night Funkin: Candy Carrier Caos", "https://iili.io/BsvRRwP.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clfnfcandycarrier.html", true],
+["Xor", "https://iili.io/BsvRcPa.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clxor.html", true],
+["Zrist", "https://iili.io/BsvR0KJ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clzrist.html", true],
+["You vs 100 Skibidi", "https://iili.io/BsvRESR.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clyouvs100skibidi.html", true, "Action"],
+["Villager", "https://iili.io/BsvR1cv.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clvillager.html", true],
+["House of Hazards", "https://iili.io/BsvRM9p.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clhouseofhazards.html", true],
+["Papa Louie 2: When Burgers Attack", "https://iili.io/BiXs419.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/paplouie2burger.html", true],
+["Super Liquid Soccer", "https://iili.io/BihBAle.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/superliquidsoccer.html", true, "Sports"],
+["Tomodachi Collection", "https://iili.io/BsvyN0G.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/cltomodachicollection.html", true],
+["Fih", "https://iili.io/Bsvyhsn.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/fih.html", true],
+["I Have No Mouth And I Must Scream", "https://iili.io/BsvyOgf.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/IHNMAIMS.html", true],
+
+["A Small World Cup", "https://iili.io/BsvykJ4.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/ASWC.html", true, "Sports"],
+["Bad Monday Simulator", "https://iili.io/B4CL0Qf.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/BMS.html", true, "Action"],
+["The Worlds Hardest Game", "https://iili.io/Bs8dzEF.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/twhg.html", true],
+["Blocky Snakes", "https://iili.io/Bs8dIrg.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/BlockySnakes.html", true],
+
+["Idle Mining Empire", "https://iili.io/BLVFekv.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/IdleMiningEmpire.html", true, "Simulator"],
+["Sandboxels", "https://iili.io/BLVFjrg.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Sandboxels.html", true, "Simulator"],
+["Idle Breakout", "https://iili.io/BLVFN2a.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/IdleBreakout.html", true, "Simulator"],
+["Snowbattle.io", "https://iili.io/BLVFOYJ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Snowbattle.io.html", true, "Strategy"],
+["The Impossible Quiz", "https://iili.io/BLVFkpR.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/TheImpossibleQuiz.html", true, "Strategy"],
+["Worst Time Simulator", "https://iili.io/BLVF8Ip.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/WorstTimeSimulator.html", true, "Action"],
+["Please Don’t Touch Anything", "https://iili.io/BLVFShN.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/PDTA.html", true],
+["Terraria", "https://iili.io/BLVFUQI.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Terraria.html", true, "Action"],
+
+["Google Feud", "https://iili.io/BLVFrBt.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/GoogleFeud.html", true, "Strategy"],
+["Super Mario 64", "https://iili.io/BLVF4EX.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/SuperMario64.html", true, "Action"],
+["Suika Game", "https://iili.io/BLVFi2s.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/SuikaGame.html", false, "Strategy"],
+
+["Robot Unicorn Attack", "https://iili.io/BLVFsYG.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/robotuni.html", false, "Action"],
+
+["Bendy and The Ink Machine", "https://iili.io/BLVFLvf.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/batim.html", true],
+["Hollow Knight", "https://iili.io/BLVFQp4.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/HollowKnight.html", true, "Action"],
+["Big Tower Tiny Square 2", "https://iili.io/BLVWFZx.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/BTTS2.html", true, "Strategy"],
+["Bloxorz", "https://iili.io/BLVW3jj.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Bloxorz.html", true],
+["Harvest.io", "https://iili.io/BLVWB6B.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Harvest.io.html", true, "Strategy"],
+
+
+["Helltaker", "https://iili.io/BLVWfCQ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Helltaker.html", false, "Strategy"],
+["Papas Donuteria", "https://iili.io/BLWHfx1.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/papasdonut.html", false],
+["Papas Taco Mia", "https://iili.io/BLWH3OB.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/papastaco.html", false],
+["Papas Cupcakeria", "https://iili.io/BLWHFDP.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/papascupcake.html", false],
+["60 Second Burger Run", "https://iili.io/BLW9yKb.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/60secondburger.html", false,"Strategy"],
+["Slope", "https://iili.io/BLjWhcQ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Slope.html", true],
+["Burrito Bison: Launcha Libre", "https://iili.io/BLjWjSV.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/BurBisLauLib.html", true],
+["Rhythm Haven", "https://iili.io/BLjWNHB.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clrhythymymheaven.html", true, "Strategy"],
+["Five Nights at Epstine’s", "https://example.com", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/fnae.html", true],
+["Untitled Goose Game", "https://iili.io/BLjWXKx.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/ugg.html", true],
+["Youtubers Life", "https://iili.io/BLkmDyg.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/ytlife.html", true],
+["Five Nights at Frickbears 3", "https://iili.io/BLkmmua.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/frickbears.html", true, "Strategy"],
+["Amaze", "https://iili.io/BL86W0u.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Amaze.html", true],
+["Space Waves", "https://iili.io/BL86w5x.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/SpaceWaves.html", true],
+["Coreball", "https://iili.io/BL86Vfe.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Coreball.html", true,"Strategy"],
+["Football Bros", "https://freeimage.host/i/BL86XUb", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/FootballBros.html", true, "Sports"],
+["Drift Hunters", "https://iili.io/BL86kzB.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/DriftHunters.html", true, "Cars"],
+["Mob Control", "https://iili.io/BL86vWP.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/MobControl.html", true],
+["Blade Ball", "https://iili.io/BL868s1.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/BladeBall.html", true, "Action"],
+["Highway Racers 2", "https://iili.io/BL86g0g.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Highway2.html", true, "Cars"],
+["Recoil", "https://iili.io/BL86rga.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Recoil.html", true],
+["Tunnel Rush", "https://iili.io/BL866dJ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/TunnelRush.html", true],
+["Little Runmo", "https://iili.io/BL86ieR.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/LittleRunmo.html", true],
+["Plinko", "https://iili.io/BL86sbp.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/Plinko.html", true, "Strategy"],
+["Basket Battle", "https://iili.io/BL86QzN.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/BasketBattle.html", true, "Sports"],
+["Get Yoked", "https://iili.io/BL86ZXI.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/GetYoked.html", true, "Strategy"],
+["Crazy Cars", "https://iili.io/BL86m1n.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/CrazyCars.html", true, "Cars"],
+["Slime Rancher", "https://iili.io/BL86pgs.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/SlimeRancher.html", true],
+["Robot Invasion", "https://iili.io/BL8P9dG.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/RobotInvasion.html", true, "Action"],
+["Build a Plane", "https://iili.io/BL8Pdml.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/BuildPlane.html", true],
+["Draw Joust", "https://iili.io/BL8PFXS.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/DrawJoust.html", true, "Action"],
 
 
 ];
@@ -801,32 +1120,33 @@ const games = [
 
 ["Minecraft (Computer Only)", "https://iili.io/BNuvoSR.jpg", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/clmine.html ", true, "Creative"],
 ["Minecraft Classic", "https://iili.io/BgrguyX.webp", "https://gist.githubusercontent.com/rainS-IM/fa3f02b5791413203c407194d3f70f76/raw/76be7fb4f72361ded0668f353140c1597c0a1631/Minecraft", true, "Creative"],
-
+["Subway Surfers", "https://iili.io/BLGfsOQ.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/subway.html", true, "Strategy"],
     ["Getaway Shootout", "https://iili.io/BGi3pyJ.png", "https://gist.githubusercontent.com/rainS-IM/e28334b9dd0e17e7fdc6c3ba156aa1b5/raw/13053173cdf220803d5e4ff709309d2554cfc457/game8", false, "Shooter"],
     ["Zombies Coming", "https://iili.io/BGiq6S1.png", "https://gist.githubusercontent.com/rainS-IM/619631cbdd1ef62198d33d8ecc618cec/raw/bd41f4a555044008da32eefee74d353c121cdb4a/game9", false, "Shooter"],
     ["Slow Roads", "https://iili.io/BGiov5P.png", "https://gist.githubusercontent.com/rainS-IM/69822305792f840a8790b5e528e9b469/raw/89df91de02753e43704339cc1e75f959931dd5ef/game6", false, "Cars"],
-  ["Escape Road", "https://iili.io/BGiTgvp.png", "https://gist.githubusercontent.com/rainS-IM/3742ba7f5aa1f6f2a18411d1dbb4b66f/raw/4ef73bdeddee074dedee6ccc3c4750996dd01ef3/game5", false, "Cars"],
-
+  ["Escape Road", "https://iili.io/BGiTgvp.png",  "https://gist.githubusercontent.com/rainS-IM/3742ba7f5aa1f6f2a18411d1dbb4b66f/raw/4ef73bdeddee074dedee6ccc3c4750996dd01ef3/game5", false, "Cars"],
+["Escape Road 2", "https://iili.io/Bsvywfs.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/EscapeRoad2.html", true, "Cars"],
+["Escape Road 3", "https://iili.io/BL8PKL7.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/EscapeRoad3.html", true, "Cars"],
     
-    ["Paper.io", "https://iili.io/BGiEnZx.png", "https://gist.githubusercontent.com/rainS-IM/c3580d09c190cc58e6d80922aa993eae/raw/43912568466976d974919460c84d78a41b47980e/game11", false],
+    ["Paper.io", "https://iili.io/BGiEnZx.png", "https://gist.githubusercontent.com/rainS-IM/c3580d09c190cc58e6d80922aa993eae/raw/43912568466976d974919460c84d78a41b47980e/game11", false, "Strategy"],
     ["Pixel Shooter", "https://iili.io/BGiMwB4.png", "https://gist.githubusercontent.com/rainS-IM/2433594caf1c5c241ed21dbb36768e4a/raw/01ba2e4b9eeb1336e5436e4fcb6fd2c1562e6035/game12", false, "Shooter"],
     ["Traffic Run", "https://iili.io/BGiWrqx.png", "https://gist.githubusercontent.com/rainS-IM/909de8d9b2f550e484ff21663e0f01e2/raw/9e70e5373ba31c623729284cdc7d660634ffb02e/game12", false, "Cars"],
     ["Crazy Crash", "https://iili.io/Bh3K4ft.png", "https://gist.githubusercontent.com/rainS-IM/1a7141fd29a09a49722e95671e794dd3/raw/ba0f6ead146e925f265524e9b1db4b24b20cb595/crazyCrash", false, "Action"],
     ["1v1 LOL", "https://iili.io/Bh3KsJs.png", "https://gist.githubusercontent.com/rainS-IM/12a872c222c8fc039ec19b2ab5560b69/raw/b996eae2763d2d92649d61c4798e9fc3a29eb3b6/1v1lol", false, "Shooter"],
-    ["Block Blast", "https://iili.io/BGij6g4.png", "https://gist.githubusercontent.com/rainS-IM/d8e3d3eba2a19766de891087fea035ac/raw/6a8269e71b750ed9bdbb856a0c342afef4caa591/blockBlastNew", false],
+    ["Block Blast", "https://iili.io/BGij6g4.png", "https://gist.githubusercontent.com/rainS-IM/d8e3d3eba2a19766de891087fea035ac/raw/6a8269e71b750ed9bdbb856a0c342afef4caa591/blockBlastNew", false, "Strategy"],
     ["Survival Race", "https://iili.io/Bh3KUWN.png", "https://gist.githubusercontent.com/rainS-IM/0f836f07993cde194ff07c51c77908cb/raw/5c6f06ab899e0dfa83a81ac2099927dd22f8f6b9/survivalRace", false, "Cars"],
     ["Ragdoll Archers", "https://iili.io/Bh3KL5G.png", "https://gist.githubusercontent.com/rainS-IM/bba3b4d1f0832a5151695c9f005db4dd/raw/b1ce5480adf5ff6ac352c34be93832dd1bea0750/ragdollArchers", false, "Shooter"],
     ["Cluster Rush", "https://iili.io/Bh3KZb4.png", "https://gist.githubusercontent.com/rainS-IM/95e744f662f34fd7d0eda5401d488143/raw/90e3c911f5ad4bc923348e5b283df739e8935c7f/ClusterRush", false, "Cars"],
     ["Gun Spin", "https://iili.io/Bh3KmsS.png", "https://gist.githubusercontent.com/rainS-IM/b418c40f020d2dda879633b54e1ae9cf/raw/d7127aeefb592d983c5faa89d28a56daf5eda209/gunSpin", false, "Shooter"],
     ["TABS", "https://iili.io/Bh3f919.png", "https://gist.githubusercontent.com/rainS-IM/c151696d3158db35363b09a1682e0ee1/raw/f1dda6db5e8d128a59ba16b823c25716ba129bdc/Tabs", false, "Shooter"],
     ["Basket Random", "https://iili.io/Bh3f25b.png", "https://gist.githubusercontent.com/rainS-IM/1c4eb2d3774088101c506ae9ea9dc680/raw/40dd925ddb8fd57694174be47c6a6063aea2fae0/basketRandom", false, "Sports"],
-    ["Snow Rider", "https://iili.io/Bh3fFmx.png", "https://gist.githubusercontent.com/rainS-IM/32ee554debd1034b584ac411f930c254/raw/e31fde1cbcbaf14d5e48f42c089cfe3c7b457576/snowRider", false],
+    ["Snow Rider", "https://iili.io/Bh3fFmx.png", "https://gist.githubusercontent.com/rainS-IM/32ee554debd1034b584ac411f930c254/raw/e31fde1cbcbaf14d5e48f42c089cfe3c7b457576/snowRider", false, "Strategy"],
     ["Car Draw", "https://iili.io/BhaeuBS.png", "https://gist.githubusercontent.com/rainS-IM/83fd5ffcd47b01d0ba8ee209dac6425b/raw/dc2a597b21aa72e50cb35a7fb41ff4dc60bb7bc0/CarDraw", false, "Cars"],
-    ["Magic Tiles", "https://iili.io/BhakeSe.png", "https://gist.githubusercontent.com/rainS-IM/516a166aa1cf240d7c316698214d417e/raw/27703a0b5a0dc780074dc0932d8344138fb314ab/magicTiles", false],
-    ["Hole.io", "https://iili.io/Bha8uBp.png", "https://gist.githubusercontent.com/rainS-IM/9e804bde0c5521b97070687480b17bcb/raw/a87f3a701a0d82b21763c9213820c367ff362f86/holeIO", false],
+    ["Magic Tiles", "https://iili.io/BhakeSe.png", "https://gist.githubusercontent.com/rainS-IM/516a166aa1cf240d7c316698214d417e/raw/27703a0b5a0dc780074dc0932d8344138fb314ab/magicTiles", false, "Strategy"],
+    ["Hole.io", "https://iili.io/Bha8uBp.png", "https://gist.githubusercontent.com/rainS-IM/9e804bde0c5521b97070687480b17bcb/raw/a87f3a701a0d82b21763c9213820c367ff362f86/holeIO", false, "Strategy"],
     ["Cookie Clicker", "https://iili.io/BhaPpzF.png", "https://gist.githubusercontent.com/rainS-IM/40213cf60062a5664e4def16cb972c22/raw/459d70fe26e819055c97cfe2a4526855f40e26c6/cookieClicker", false, "Simulator"],
     ["Drift Boss", "https://iili.io/BhasVGs.png", "https://gist.githubusercontent.com/rainS-IM/84d4418a4aca6ded2a28bf911141b5fe/raw/2d845e4887d8e55603f85a4391f692ecdf2583a3/DriftBoss", false, "Cars"],
-    ["Crazy Cattle", "https://iili.io/BhaSGAg.png", "https://gist.githubusercontent.com/rainS-IM/525a474d1af25f998e6dfb5c48b51d6a/raw/b7eee742e7ae2d7fdf7d8f40120bcbba3406ede2/crazyCattle", false, "Action"],
+    ["Crazy Cattle 3D", "https://iili.io/BhaSGAg.png", "https://cdn.jsdelivr.net/gh/rains-im/BPLGames/CrazyCattle.html", true, "Action"],
     ["Angry Birds", "https://iili.io/BhaLifs.png", "https://gist.githubusercontent.com/rainS-IM/35a2775037ae6f1dd166e34c6fc6cadd/raw/de584835d62f6158482e517381f4edde7a2e30dc/angrybirds", false, "Action"],
     ["Bad Time Simulator", "https://iili.io/BwRp5jR.jpg", "https://gist.githubusercontent.com/rainS-IM/0e16f309056ebc3a01d784c412288a14/raw/9ea56194d85ab654030c972eb5c85b89360ad3d5/batTimeSim", false, "Action"],
 ];
@@ -836,29 +1156,47 @@ function checkCode(){
   if(input === ACCESS_CODE){
     document.getElementById("mainWrapper").style.display = "none";
     document.getElementById("content").style.display = "block";
-    localStorage.setItem('enterWebsite', 'true');
+    const loginData = {
+  loggedIn: true,
+  expires: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+};
+
+localStorage.setItem('loginData', JSON.stringify(loginData));
+
     openPopup()
-createCategoryTabs();
+
     updateGameCount();
     renderGames(""); // Initial render
   } else {
   if(input === "6741jhgffghjhgfddf"){
     alert("Code changed! Please see owner")
   } else {
-alert("Wrong Code")
+alert("Thanks!")
   }
   }
 }
 
-if(localStorage.getItem('enterWebsite') == "true"){
+const saved = JSON.parse(localStorage.getItem('loginData'));
 
+if (saved && saved.loggedIn && Date.now() < saved.expires) {
     document.getElementById("mainWrapper").style.display = "none";
     document.getElementById("content").style.display = "block";
-    openPopup()
-    createCategoryTabs();
-    updateGameCount();
-    renderGames(""); // Initial render
-};
+    openPopup();
+        updateGameCount();
+    renderGames("");
+} else {
+    localStorage.removeItem('loginData');
+}
+
+
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function scrollToVideo(){
+  document.getElementById("videoSection").scrollIntoView({behavior:"smooth"});
+}
+
 
 function openSettings() {
   document.getElementById("settingsPage").style.display = "flex";
@@ -866,7 +1204,7 @@ function openSettings() {
 
 function closePopup() {
   document.getElementById("popupsPage").style.display = "none";
-  localStorage.setItem('popupBlock', 'true');
+  localStorage.setItem('popupStart', 'true');
 }
 
 
@@ -898,25 +1236,57 @@ function renderApps(filterText = "") {
 }
 
 
+function renderMovies() {
+    const grid = document.getElementById("moviesGrid");
+    grid.innerHTML = "";
+
+    movies.forEach(m => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const imgSrc = (!m[1] || m[1] === "none")
+            ? DEFAULT_IMAGE
+            : m[1];
+
+        card.innerHTML = `
+            <img src="${imgSrc}">
+            <p>${m[0]}</p>
+        `;
+
+        card.onclick = () => {
+            window.open(m[2], "_blank");         };
+
+        grid.appendChild(card);
+    });
+}
 
 
 
 function showTab(tab) {
   const games = document.getElementById("gamesContainer");
   const apps = document.getElementById("appsContainer");
-
+const movies = document.getElementById("moviesContainer");
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
 
   if (tab === "games") {
     games.style.display = "block";
     apps.style.display = "none";
+movies.style.display = "none";
     document.querySelectorAll(".tab")[0].classList.add("active");
-  } else {
+  } else if (tab == "apps") {
     games.style.display = "none";
     apps.style.display = "block";
+movies.style.display = "none";
+
     document.querySelectorAll(".tab")[1].classList.add("active");
     renderApps();
-  }
+  } else {
+games.style.display = "none";
+apps.style.display = "none";
+    movies.style.display = "block";
+    document.querySelectorAll(".tab")[2].classList.add("active");
+renderMovies(); 
+}
 }
 
 function createCategoryTabs() {
@@ -1117,10 +1487,13 @@ window.addEventListener('load', () => {
 
 
 async function openFromURLBlob(url){
-alert("If a tab doesn’t open PLEASE watch the video on how to fix it/disable block popups https://drive.google.com/file/d/1Pc1_ypdFQsV7o2wXHkbNmkqq-ZniBSnJ/view?usp=share_link");
 
+
+alert("If a tab doesn’t open PLEASE watch the video on how to fix it/disable block popups https://drive.google.com/file/d/1Pc1_ypdFQsV7o2wXHkbNmkqq-ZniBSnJ/view?usp=share_link");
   try {
     const res = await fetch(url);
+
+
     const html = await res.text();
     const blob = new Blob([html], { type: "text/html" });
     const blobURL = URL.createObjectURL(blob);
@@ -1129,6 +1502,7 @@ alert("If a tab doesn’t open PLEASE watch the video on how to fix it/disable b
 }
 
 async function openFromURL(url, gameName){
+openedGame = true; 
   trackGame(gameName);
   const newTab = window.open("about:blank", "_blank");
   if (!newTab) { alert("Popup blocked!"); return; }
@@ -1144,22 +1518,47 @@ async function openFromURL(url, gameName){
 }
 
 function renderGames(filterText = "") {
-    const grid = document.getElementById("grid");
-    grid.innerHTML = "";
+    const container = document.getElementById("grid");
+    container.innerHTML = "";
 
     const term = filterText.toLowerCase();
     const allGames = [...games, ...blobGames];
 
+    const grouped = {};
+
     allGames.forEach(g => {
-        const gameName = g[0];
-        const gameCategory = g[4] || "Uncategorized";
+        const name = g[0];
+        const category = g[4] || "Other";
 
-        const matchesSearch = gameName.toLowerCase().includes(term);
-        const matchesCategory =
-            currentCategory === "All" ||
-            gameCategory === currentCategory;
+        if (!name.toLowerCase().includes(term)) return;
 
-        if (matchesSearch && matchesCategory) {
+        if (!grouped[category]) grouped[category] = [];
+        grouped[category].push(g);
+    });
+
+    Object.entries(grouped)
+    .sort((a, b) => {
+        if (a[0] === "Other") return 1;      // force "Other" last
+        if (b[0] === "Other") return -1;
+        return a[1].length - b[1].length;   // smallest → largest
+    })
+    .forEach(([category, gamesList]) => {
+
+        const section = document.createElement("div");
+        section.className = "category-section";
+
+        const header = document.createElement("div");
+        header.className = "category-header";
+        header.innerText = `${category} Games: ${grouped[category].length}`;
+
+        const content = document.createElement("div");
+        content.className = "category-content grid";
+
+        header.onclick = () => {
+            content.classList.toggle("collapsed");
+        };
+
+        grouped[category].forEach(g => {
             const card = document.createElement("div");
             card.className = "card";
 
@@ -1169,18 +1568,31 @@ function renderGames(filterText = "") {
 
             card.innerHTML = `
                 <img src="${imgSrc}">
-                <p>${gameName}</p>
+                <p>${g[0]}</p>
             `;
 
-            card.onclick = () => {
-                if (g[3] === true) openFromURLBlob(g[2]);
-                else openFromURL(g[2], gameName);
+            card.onclick = () => { 
+                const gameUrl = g[2];
+                const gameTitle = g[0];
+                const isBlob = g[3];
+
+                if (isBlob === true) {
+                    openGamePreview(gameUrl, gameTitle, true);
+                } else {
+                    openFromURL(gameUrl, gameTitle);
+                }
             };
 
-            grid.appendChild(card);
-        }
+            content.appendChild(card);
+        });
+
+        section.appendChild(header);
+        section.appendChild(content);
+        container.appendChild(section);
     });
+initLazyLoading();
 }
+
 
 
 function filterGames() {
@@ -1188,7 +1600,51 @@ function filterGames() {
     renderGames(val);
 }
 
+window.addEventListener("beforeunload", function () {
+  if (!openedGame) {
+    localStorage.removeItem('loginData');
+  }
+});
 
+function logout() {
+  // Clear login data
+  localStorage.removeItem('loginData');
+
+  // Optional: also clear old key if still used
+  localStorage.removeItem('enterWebsite');
+
+  // Reset UI
+  document.getElementById("content").style.display = "none";
+  document.getElementById("mainWrapper").style.display = "block";
+
+  // Close settings if open
+  closeSettings();
+
+  // Clear PIN input
+  document.getElementById("codeInput").value = "";
+
+  // Reset game flag
+  openedGame = false;
+}
+
+function initLazyLoading() {
+    const images = document.querySelectorAll(".lazy-img");
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove("lazy-img");
+                obs.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: "100px" // preload slightly before visible
+    });
+
+    images.forEach(img => observer.observe(img));
+}
 
 
 </script>
@@ -1197,6 +1653,8 @@ function filterGames() {
 <div id="footerContainer"></div>
 </body>
 </html>
+
+
 
 
 
