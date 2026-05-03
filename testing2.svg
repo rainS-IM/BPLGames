@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="width:100%; height:100%; margin:0; padding:0;">
+      
+      <div id="status" style="font-family:sans-serif; color:#666; padding:20px;">
+        Connecting to BPL Premium...
+      </div>
+
+      <script type="text/javascript">
+        // Use an IIFE to avoid global scope pollution
+        (function() {
+          const url = "https://cdn.jsdelivr.net/gh/rainS-IM/BPLGames@main/BPLPremium.html";
+          const statusDiv = document.getElementById('status');
+
+          fetch(url)
+            .then(response => {
+              if (!response.ok) throw new Error('Network response was not ok');
+              return response.text();
+            })
+            .then(html => {
+              // Create a Blob from the HTML content
+              const blob = new Blob([html], { type: 'text/html' });
+              const blobUrl = URL.createObjectURL(blob);
+
+              // Replace the status text with the iframe
+              document.body.innerHTML = `
+                <iframe src="${blobUrl}" 
+                        style="position:fixed; top:0; left:0; width:100%; height:100%; border:none; margin:0; padding:0;">
+                </iframe>`;
+            })
+            .catch(err => {
+              statusDiv.innerHTML = `<div style="color:red;">Failed to load: ${err.message}</div>`;
+            });
+        })();
+      </script>
+    </div>
+  </foreignObject>
+</svg>
