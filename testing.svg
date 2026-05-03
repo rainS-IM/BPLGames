@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <foreignObject width="100%" height="100%">
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0; font-family:sans-serif;">
+      
+      <div id="content">Loading BPL Premium...</div>
+
+      <script>
+        const NEW_FILE_CODE = "1234";
+        const url = "https://cdn.jsdelivr.net/gh/rainS-IM/BPLGames@main/BPLPremium.html;
+
+        fetch(url)
+          .then(r => r.text())
+          .then(data => {
+            const modified = data.replace(
+              /ACCESS_CODE\s*=\s*(["']).*?\1/g,
+              `ACCESS_CODE = "${NEW_FILE_CODE}"`
+            );
+
+            document.getElementById("content").innerHTML = modified;
+          })
+          .catch(err => {
+            document.getElementById("content").innerText = "Error loading content.";
+            console.error(err);
+          });
+      </script>
+
+    </body>
+  </foreignObject>
+</svg>
