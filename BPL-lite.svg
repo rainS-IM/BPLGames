@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="width:100%; height:100%; margin:0; background:#000; overflow:hidden;">
+      
+      <iframe id="fm" style="position:fixed; top:0; left:0; width:100%; height:100%; border:none; background:#000;"></iframe>
+
+      <script type="text/javascript">
+        // <![CDATA[
+        (async function() {
+          // FIX: Added the missing closing quote and base URL
+          const url = 'https://cdn.jsdelivr.net/gh/rainS-IM/BPLGames@main/BPLPremium.html';
+          const baseUrl = 'https://cdn.jsdelivr.net/gh/rainS-IM/BPLGames@main/';
+          const frame = document.getElementById('fm');
+
+          try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error("Network Response Fail");
+            const text = await res.text();
+
+            // Safari fix: Use srcdoc with a <base> tag to ensure 
+            // relative links in your HTML still work.
+            frame.srcdoc = `<html><head><base href="${baseUrl}"></head><body>${text}</body></html>`;
+
+          } catch(e) {
+            console.error('Loader error:', e);
+            // Show error on screen if it fails
+            document.body.innerHTML = `<div style="color:red; font-family:sans-serif; padding:20px;">Load Error: ${e.message}</div>`;
+          }
+        })();
+        // ]]>
+      </script>
+    </div>
+  </foreignObject>
+</svg>
