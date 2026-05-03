@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <foreignObject width="100%" height="100%">
+    <div id="bpl-root" xmlns="http://www.w3.org/1999/xhtml" style="width:100%; height:100%; margin:0; padding:0; background:#000;">
+      
+      <div id="status" style="font-family:sans-serif; color:#555; text-align:center; padding-top:20vh;">
+        Initializing BPL Premium...
+      </div>
+
+      <script type="text/javascript">
+        // <![CDATA[
+        (async function() {
+          const gameUrl = "https://cdn.jsdelivr.net/gh/rainS-IM/BPLGames@main/BPLPremium.html";
+          const baseUrl = "https://cdn.jsdelivr.net/gh/rainS-IM/BPLGames@main/";
+          
+          // Target the div specifically since document.body is null in SVGs
+          const root = document.getElementById('bpl-root');
+          const status = document.getElementById('status');
+
+          try {
+            const response = await fetch(gameUrl);
+            if (!response.ok) throw new Error("Connection failed");
+            const htmlContent = await response.text();
+
+            // Create the iframe
+            const iframe = document.createElement('iframe');
+            iframe.style = "position:fixed; top:0; left:0; width:100%; height:100%; border:none; background:#fff;";
+            
+            // Clear the root div and inject the iframe
+            root.innerHTML = "";
+            root.appendChild(iframe);
+
+            // Write the content to the iframe
+            const doc = iframe.contentWindow.document;
+            doc.open();
+            doc.write(`<base href="${baseUrl}">` + htmlContent);
+            doc.close();
+          } catch (err) {
+            if (status) {
+              status.innerHTML = `<div style="color:#ff4444;">Load Error: ${err.message}</div>`;
+            }
+          }
+        })();
+        // ]]>
+      </script>
+    </div>
+  </foreignObject>
+</svg>
